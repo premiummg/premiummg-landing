@@ -76,6 +76,7 @@ export const post = defineType({
   name: 'post',
   title: 'Blog article',
   type: 'document',
+  initialValue: (_params, context) => ({ author: context.currentUser?.name?.trim() || undefined }),
   groups: [
     { name: 'en', title: 'English' },
     { name: 'fr', title: 'Français' },
@@ -111,6 +112,9 @@ export const post = defineType({
       type: 'string',
       options: { list: SERVICE_OPTIONS, layout: 'dropdown' },
     }),
+    // Filled in by itself with the name of the account that creates the article
+    // (see initialValue below): nobody types it, so it is not shown.
+    defineField({ name: 'author', title: 'Author', type: 'string', hidden: true }),
     defineField({ name: 'excerpt', title: 'Summary', description: 'Two sentences. Shown on the blog list and in Google.', type: 'localizedText' }),
     defineField({ name: 'image', title: 'Cover photo', type: 'image', options: { hotspot: true } }),
     defineField({

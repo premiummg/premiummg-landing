@@ -50,6 +50,9 @@ export interface Post {
   photoAlt: string;
   photoCaption?: L;
   readMinutes: number;
+  // Who wrote it: the name of the Studio account that created the article.
+  // Empty: the company name (and, on the sample posts, a visible placeholder).
+  author?: string;
   title: L;
   excerpt: L;
   body: Block[];

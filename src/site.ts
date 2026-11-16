@@ -7,6 +7,9 @@ export const PHONE_DISPLAY = '+1 866 531 5402';
 export const PHONE_E164 = '+18665315402';
 export const LEGAL_NAME = 'Premium Management Global Solutions Inc.';
 export const BRAND_NAME = 'Premium Group';
+// The company's own name, for places that name it in full (e.g. an article's
+// byline when no one is named).
+export const COMPANY_NAME = 'Premium Management Group';
 
 export const ADDRESS = {
   streetAddress: '463 Champlain St',

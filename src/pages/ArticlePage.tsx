@@ -12,7 +12,7 @@ import { youtubeId } from '../../studio/schemaTypes/blocks';
 import { YouTubeEmbed } from '../components/YouTubeEmbed';
 import { ShareButtons } from '../components/ShareButtons';
 import { POST_PATH, SERVICE_PATH, localePath } from '../lib/routes';
-import { SITE_URL } from '../site';
+import { COMPANY_NAME, SITE_URL } from '../site';
 import { useLinkProps, useLocaleHref } from '../lib/useLocaleHref';
 import { Certifications } from '../components/Certifications';
 import { ClosingCta } from '../components/ClosingCta';
@@ -32,6 +32,10 @@ export function ArticlePage() {
   const a = t.articlePage;
   const service = post.service ? serviceByKey(post.service) ?? null : null;
   const serviceName = service ? pick(service.name, lang) : '';
+  const author = post.author ?? (post.sample ? a.authorPlaceholder : COMPANY_NAME);
+  const authorInitials = post.author
+    ? post.author.split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('')
+    : 'PG';
   const toc = post.body.filter(b => b.type === 'h2');
   const more = SORTED_POSTS.filter(p => p.slug !== post.slug).slice(0, 3);
   const P = `text-lg leading-[1.75] ${INK}`;
@@ -50,8 +54,8 @@ export function ArticlePage() {
           <p className={`text-lg md:text-xl leading-relaxed max-w-3xl ${BODY}`}>{pick(post.excerpt, lang)}</p>
           <div className={`flex flex-wrap items-center gap-x-5 gap-y-3 pt-2 text-[15px] ${BODY}`}>
             <span className="inline-flex items-center gap-2.5">
-              <span aria-hidden="true" className="w-10 h-10 rounded-full grid place-items-center bg-(--premium-red-dark) text-white font-heading font-extrabold text-sm">PG</span>
-              <span className={`font-heading font-bold ${INK}`}>{a.authorPlaceholder}</span>
+              <span aria-hidden="true" className="w-10 h-10 rounded-full grid place-items-center bg-(--premium-red-dark) text-white font-heading font-extrabold text-sm">{authorInitials}</span>
+              <span className={`font-heading font-bold ${INK}`}>{author}</span>
             </span>
             <time dateTime={post.date}>{formatDate(post.date, lang)}</time>
             <span className="inline-flex items-center gap-1.5"><FiClock size={16} aria-hidden="true" /> {fill(t.blogPage.minRead, { n: post.readMinutes })}</span>

@@ -44,7 +44,7 @@ if (!projectId) {
 
 const QUERY = `{
   "posts": *[_type == "post" && defined(slug.current)] | order(date desc) {
-    "slug": slug.current, date, category, service, readMinutes, title, excerpt, imageAlt, imageCaption, bodyEn, bodyFr,
+    "slug": slug.current, date, category, service, readMinutes, title, excerpt, author, imageAlt, imageCaption, bodyEn, bodyFr,
     "photoUrl": image.asset->url
   },
   "projects": *[_type == "project" && defined(image.asset)] | order(coalesce(order, 999999) asc, _createdAt desc) {
@@ -96,6 +96,7 @@ const posts = result.posts.map((p) => {
     photoAlt: p.imageAlt ?? '',
     ...(p.imageCaption?.en && p.imageCaption?.fr ? { photoCaption: { en: p.imageCaption.en, fr: p.imageCaption.fr } } : {}),
     readMinutes: p.readMinutes,
+    ...(p.author?.trim() ? { author: p.author.trim() } : {}),
     title: needL(p.title, 'the title', id),
     excerpt: needL(p.excerpt, 'the summary', id),
     body,

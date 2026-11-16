@@ -104,6 +104,7 @@ export function seoFor(lang: Lang, path: string): PageSeo {
       articleSection: pick(categoryLabel(post.category), lang),
       inLanguage: lang === 'fr' ? 'fr-CA' : 'en-CA',
       mainEntityOfPage: canonical,
+      author: post.author ? { '@type': 'Person', name: post.author } : { '@id': ORG_ID },
       publisher: { '@id': ORG_ID },
     });
   } else {
