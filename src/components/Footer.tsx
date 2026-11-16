@@ -12,6 +12,7 @@ import { EMAIL_PATTERN, LIMITS } from '../formLimits';
 import { COMPANY_EMAIL, LEGAL_NAME, PHONE_DISPLAY, PHONE_E164 } from '../site';
 import { Certifications } from './Certifications';
 import { Logo } from './Logo';
+import { SocialLinks } from './SocialLinks';
 
 const FL = 'inline-flex items-center gap-2 min-h-8 text-[15px] text-white/80 hover:text-white hover:underline';
 
@@ -106,6 +107,7 @@ export function Footer() {
         </ul>
         <p className="pmg-eyebrow text-xs text-white/70 mt-6 mb-2">{t.footer.hours}</p>
         <p className="text-[15px]">{t.hours}</p>
+        <div className="mt-6"><SocialLinks label={t.footer.follow} newTab={t.articlePage.newTab} /></div>
       </FooterColumn>
       <FooterColumn label={t.newsletter.label}>
         <Newsletter />

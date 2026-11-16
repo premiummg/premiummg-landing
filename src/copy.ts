@@ -213,6 +213,7 @@ export const EN = {
     terms: 'Terms of Use',
     privacy: 'Privacy Policy',
     certified: 'Certified and accredited',
+    follow: 'Follow us',
   },
   breadcrumb: { label: 'Breadcrumb', home: 'Home' },
   servicePage: {
@@ -533,6 +534,7 @@ export const FR: Copy = {
     terms: 'Conditions d’utilisation',
     privacy: 'Politique de confidentialité',
     certified: 'Certifié et accrédité',
+    follow: 'Suivez-nous',
   },
   breadcrumb: { label: 'Fil d’Ariane', home: 'Accueil' },
   servicePage: {

@@ -33,10 +33,11 @@ for (const f of ['.env.local', '.env']) {
 const projectId = process.env.SANITY_PROJECT_ID;
 const dataset = process.env.SANITY_DATASET || 'production';
 
+const SOCIAL_PLATFORMS = new Set(["youtube", "linkedin", "facebook", "instagram", "x"]);
 const write = (data) => writeFileSync(OUT, JSON.stringify(data, null, 2) + '\n');
 
 if (!projectId) {
-  write({ posts: null, projects: null });
+  write({ posts: null, projects: null, social: null });
   console.log('[cms] SANITY_PROJECT_ID not set: using the built-in sample content.');
   process.exit(0);
 }
@@ -48,7 +49,8 @@ const QUERY = `{
   },
   "projects": *[_type == "project" && defined(image.asset)] | order(coalesce(order, 999999) asc, _createdAt desc) {
     "id": _id, category, alt, name, "photoUrl": image.asset->url
-  }
+  },
+  "social": *[_id == "siteSettings"][0].social[]{ platform, url }
 }`;
 
 const url = `https://${projectId}.api.sanity.io/v2025-01-01/data/query/${dataset}?perspective=published&query=${encodeURIComponent(QUERY)}`;
@@ -113,9 +115,15 @@ const projects = result.projects.map((p) => {
   };
 });
 
+const social = (result.social ?? []).map((s) => {
+  if (!SOCIAL_PLATFORMS.has(s.platform)) fail(`unknown social network "${s.platform}"`, 'siteSettings');
+  if (!/^https:\/\//.test(s.url ?? '')) fail(`the ${s.platform} address must start with https://`, 'siteSettings');
+  return { platform: s.platform, url: s.url };
+});
+
 const slugs = posts.map((p) => p.slug);
 const dup = slugs.find((s, i) => slugs.indexOf(s) !== i);
 if (dup) fail('two articles share this web address', dup);
 
-write({ posts: posts.length ? posts : null, projects: projects.length ? projects : null });
-console.log(`[cms] ${projectId}/${dataset}: ${posts.length} article(s), ${projects.length} project photo(s).`);
+write({ posts: posts.length ? posts : null, projects: projects.length ? projects : null, social: social.length ? social : null });
+console.log(`[cms] ${projectId}/${dataset}: ${posts.length} article(s), ${projects.length} project photo(s), ${social.length} social profile(s).`);

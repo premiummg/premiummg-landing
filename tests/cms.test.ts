@@ -3,8 +3,9 @@ import { POSTS, POST_CATEGORIES } from '../src/content/posts';
 import { PROJECTS, PROJECT_CATEGORIES } from '../src/content/projects';
 import { SERVICE_KEYS } from '../src/formLimits';
 import { pairBody, youtubeId, type PtBlock } from '../studio/schemaTypes/blocks';
+import { SOCIAL_PLATFORMS } from '../src/content/social';
 import { shareUrl } from '../src/lib/share';
-import { POST_CATEGORY_OPTIONS, PROJECT_CATEGORY_OPTIONS, SERVICE_OPTIONS } from '../studio/schemaTypes/options';
+import { POST_CATEGORY_OPTIONS, PROJECT_CATEGORY_OPTIONS, SERVICE_OPTIONS, SOCIAL_PLATFORM_OPTIONS } from '../studio/schemaTypes/options';
 
 const values = (o: { value: string }[]) => o.map(x => x.value).sort();
 
@@ -18,6 +19,10 @@ describe('Sanity Studio stays in step with the site', () => {
 
   it('offers exactly the article categories the site labels', () => {
     expect(values(POST_CATEGORY_OPTIONS)).toEqual(POST_CATEGORIES.map(c => c.key).sort());
+  });
+
+  it('offers exactly the social networks the site has icons for', () => {
+    expect(values(SOCIAL_PLATFORM_OPTIONS)).toEqual(Object.keys(SOCIAL_PLATFORMS).sort());
   });
 
   it('offers exactly the project categories the site labels', () => {

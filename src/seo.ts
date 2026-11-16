@@ -4,6 +4,7 @@ import { postBySlug, categoryLabel } from './content/posts';
 import { pick } from './content/l10n';
 import { media, PHOTOS } from './content/media';
 import { localePath, FR_PREFIX } from './lib/routes';
+import { SOCIAL } from './content/social';
 import { ADDRESS, BRAND_NAME, COMPANY_EMAIL, LEGAL_NAME, PHONE_E164, SITE_URL } from './site';
 
 const abs = (path: string) => `${SITE_URL}${path}`;
@@ -24,6 +25,7 @@ function organization(lang: Lang) {
     telephone: PHONE_E164,
     email: COMPANY_EMAIL,
     founder: { '@type': 'Person', name: 'Denis Collin' },
+    ...(SOCIAL.length ? { sameAs: SOCIAL.map(s => s.url) } : {}),
     address: { '@type': 'PostalAddress', ...ADDRESS },
     areaServed: ['New Brunswick', 'Nova Scotia', 'Prince Edward Island', 'Newfoundland and Labrador', 'Ottawa'],
     knowsLanguage: ['en-CA', 'fr-CA'],

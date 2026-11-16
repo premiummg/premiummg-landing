@@ -28,3 +28,11 @@ export const PROJECT_CATEGORY_OPTIONS = [
   { value: 'drywall', title: l('Drywall', 'Cloisons sèches') },
   { value: 'contracting', title: l('Contracting Services', 'Services d’entrepreneur') },
 ];
+
+export const SOCIAL_PLATFORM_OPTIONS = [
+  { value: 'youtube', title: 'YouTube' },
+  { value: 'linkedin', title: 'LinkedIn' },
+  { value: 'facebook', title: 'Facebook' },
+  { value: 'instagram', title: 'Instagram' },
+  { value: 'x', title: 'X (Twitter)' },
+];
