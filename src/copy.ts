@@ -275,6 +275,8 @@ export const EN = {
   articlePage: {
     inThisArticle: 'In this article',
     keyTakeaways: 'Key takeaways',
+    playVideo: 'Play the video',
+    newTab: 'opens in a new tab',
     back: 'Back to all articles',
     keepReading: 'Keep reading',
     authorPlaceholder: '[ Author name ]',
@@ -590,6 +592,8 @@ export const FR: Copy = {
   articlePage: {
     inThisArticle: 'Dans cet article',
     keyTakeaways: 'À retenir',
+    playVideo: 'Lire la vidéo',
+    newTab: 's’ouvre dans un nouvel onglet',
     back: 'Retour à tous les articles',
     keepReading: 'À lire ensuite',
     authorPlaceholder: '[ Nom de l’auteur ]',

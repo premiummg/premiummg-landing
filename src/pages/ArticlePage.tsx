@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { FiArrowRight, FiCheck, FiClock } from 'react-icons/fi';
+import { FiArrowRight, FiCheck, FiClock, FiExternalLink } from 'react-icons/fi';
 import { ColorField, PostCard, SiteButton } from '@premiummg/ui';
 import { fill } from '../copy';
 import { useT } from '../lang';
@@ -8,6 +8,8 @@ import { serviceByKey } from '../content/services';
 import { pick } from '../content/l10n';
 import { imageSrc, PLACEHOLDER_IMAGE } from '../content/media';
 import { formatDate } from '../lib/format';
+import { youtubeId } from '../../studio/schemaTypes/blocks';
+import { YouTubeEmbed } from '../components/YouTubeEmbed';
 import { POST_PATH, SERVICE_PATH } from '../lib/routes';
 import { useLinkProps, useLocaleHref } from '../lib/useLocaleHref';
 import { Certifications } from '../components/Certifications';
@@ -91,6 +93,22 @@ export function ArticlePage() {
                         </li>
                       ))}
                     </ul>
+                  );
+                case 'video': {
+                  const id = youtubeId(pick(block.url, lang));
+                  return id ? <YouTubeEmbed key={i} id={id} title={pick(post.title, lang)} playLabel={a.playVideo} /> : null;
+                }
+                case 'link':
+                  return (
+                    <p key={i}>
+                      <a
+                        href={pick(block.url, lang)} target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2.5 min-h-12 px-6 rounded-lg font-heading font-bold text-white bg-(--premium-red) hover:bg-(--premium-red-dark) motion-safe:transition-colors"
+                      >
+                        {pick(block.label, lang)} <FiExternalLink size={16} aria-hidden="true" />
+                        <span className="sr-only">({a.newTab})</span>
+                      </a>
+                    </p>
                   );
                 case 'takeaways':
                   return (

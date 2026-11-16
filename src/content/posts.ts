@@ -18,7 +18,9 @@ export type Block =
   | { type: 'h2'; id: string; text: L }
   | { type: 'quote'; text: L }
   | { type: 'list'; items: L[] }
-  | { type: 'takeaways'; text: L };
+  | { type: 'takeaways'; text: L }
+  | { type: 'video'; url: L }
+  | { type: 'link'; label: L; url: L };
 
 export type CategoryKey = 'project-updates' | 'site-safety' | 'industry-trends' | 'company' | ServiceKey;
 

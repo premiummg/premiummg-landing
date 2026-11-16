@@ -1,12 +1,14 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
 import { POST_CATEGORY_OPTIONS, SERVICE_OPTIONS } from './options';
 
-import { pairBody, type PtBlock } from './blocks';
+import { pairBody, youtubeId, type PtBlock } from './blocks';
 
 // The article text, written like a document: headings, paragraphs, bullet
 // lists, quotes and a closing "key takeaways" box. No bold, italics or links:
 // the site's design decides how text looks, so nothing an editor does can
-// break a page. One body per language, same parts in the same order.
+// break a page. One body per language, same parts in the same order. A video
+// or a link button is a part too: it goes in both languages (the address may
+// differ, e.g. a French version of the film).
 const richText = (name: 'bodyEn' | 'bodyFr', title: string, group: 'en' | 'fr') =>
   defineField({
     name,
@@ -24,6 +26,36 @@ const richText = (name: 'bodyEn' | 'bodyFr', title: string, group: 'en' | 'fr') 
         ],
         lists: [{ title: 'Bullet list', value: 'bullet' }],
         marks: { decorators: [], annotations: [] },
+      }),
+      defineArrayMember({
+        name: 'youtube',
+        title: 'YouTube video',
+        type: 'object',
+        fields: [
+          defineField({
+            name: 'url',
+            title: 'YouTube address',
+            description: 'Paste the video address, for example https://youtu.be/ck1xR8i9M20',
+            type: 'url',
+            validation: rule => rule.required().custom(v => (youtubeId(v as string | undefined) ? true : 'This is not a YouTube video address.')),
+          }),
+        ],
+        preview: { select: { title: 'url' }, prepare: ({ title }) => ({ title, subtitle: 'YouTube video' }) },
+      }),
+      defineArrayMember({
+        name: 'linkButton',
+        title: 'Link button',
+        type: 'object',
+        fields: [
+          defineField({ name: 'label', title: 'Button text', type: 'string', validation: rule => rule.required() }),
+          defineField({
+            name: 'url',
+            title: 'Address',
+            type: 'url',
+            validation: rule => rule.required().uri({ scheme: ['https'] }),
+          }),
+        ],
+        preview: { select: { title: 'label', subtitle: 'url' } },
       }),
     ],
     validation: rule =>

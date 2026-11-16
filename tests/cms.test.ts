@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { POSTS, POST_CATEGORIES } from '../src/content/posts';
 import { PROJECTS, PROJECT_CATEGORIES } from '../src/content/projects';
 import { SERVICE_KEYS } from '../src/formLimits';
-import { pairBody, type PtBlock } from '../studio/schemaTypes/blocks';
+import { pairBody, youtubeId, type PtBlock } from '../studio/schemaTypes/blocks';
 import { POST_CATEGORY_OPTIONS, PROJECT_CATEGORY_OPTIONS, SERVICE_OPTIONS } from '../studio/schemaTypes/options';
 
 const values = (o: { value: string }[]) => o.map(x => x.value).sort();
@@ -67,5 +67,45 @@ describe('pairing the English and French article bodies', () => {
     expect(pairBody([blk('a', 'h2')], [blk('a')])).toMatchObject({ ok: false, error: expect.stringContaining('heading in English') });
     expect(pairBody([], [blk('a')])).toMatchObject({ ok: false, error: 'The English article is empty.' });
     expect(pairBody([blk('a')], [])).toMatchObject({ ok: false, error: 'The French article is empty.' });
+  });
+});
+
+describe('videos and link buttons in articles', () => {
+  const video = (url: string): PtBlock => ({ _type: 'youtube', url });
+  const link = (label: string, url: string): PtBlock => ({ _type: 'linkButton', label, url });
+
+  it('reads the id from every address shape people copy', () => {
+    for (const u of [
+      'https://youtu.be/ck1xR8i9M20',
+      'https://www.youtube.com/watch?v=ck1xR8i9M20&t=5s',
+      'https://m.youtube.com/watch?v=ck1xR8i9M20',
+      'https://www.youtube.com/shorts/ck1xR8i9M20',
+      'https://www.youtube-nocookie.com/embed/ck1xR8i9M20',
+    ]) expect(youtubeId(u), u).toBe('ck1xR8i9M20');
+    for (const u of ['', 'not a url', 'https://vimeo.com/123', 'https://www.youtube.com/watch?v=short', 'javascript:alert(1)']) {
+      expect(youtubeId(u), u).toBeNull();
+    }
+  });
+
+  it('pairs a video and a link button like any other part', () => {
+    const r = pairBody(
+      [blk('Hi'), video('https://youtu.be/ck1xR8i9M20'), link('Watch', 'https://example.com/en')],
+      [blk('Salut'), video('https://youtu.be/ck1xR8i9M20'), link('Regarder', 'https://example.com/fr')],
+    );
+    expect(r).toEqual({
+      ok: true,
+      blocks: [
+        { type: 'p', text: { en: 'Hi', fr: 'Salut' } },
+        { type: 'video', url: { en: 'https://youtu.be/ck1xR8i9M20', fr: 'https://youtu.be/ck1xR8i9M20' } },
+        { type: 'link', label: { en: 'Watch', fr: 'Regarder' }, url: { en: 'https://example.com/en', fr: 'https://example.com/fr' } },
+      ],
+    });
+  });
+
+  it('refuses what could not render safely', () => {
+    expect(pairBody([video('https://vimeo.com/1')], [video('https://youtu.be/ck1xR8i9M20')])).toMatchObject({ ok: false });
+    expect(pairBody([link('Go', 'http://insecure.example')], [link('Aller', 'https://ok.example')])).toMatchObject({ ok: false });
+    expect(pairBody([link('Go', 'javascript:alert(1)')], [link('Aller', 'https://ok.example')])).toMatchObject({ ok: false });
+    expect(pairBody([blk('a'), video('https://youtu.be/ck1xR8i9M20')], [blk('a'), blk('b')])).toMatchObject({ ok: false });
   });
 });
