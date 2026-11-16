@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# The functions under /api only answer POSTs from the site's own forms.
+Disallow: /api/
+
+Sitemap: https://premiummg.ca/sitemap.xml

@@ -1,0 +1,165 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; script-src 'self' 'sha256-aqfn7hMubTalynceyQ0kbsaJAem2sNPvc0N7HRPJvyY=' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-ancestors 'none'"
+        }
+      ]
+    },
+    {
+      "source": "/(fonts|media)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/about-us",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/fr/about-us",
+      "destination": "/fr/about",
+      "permanent": true
+    },
+    {
+      "source": "/caulking",
+      "destination": "/services/caulking",
+      "permanent": true
+    },
+    {
+      "source": "/fr/caulking",
+      "destination": "/fr/services/caulking",
+      "permanent": true
+    },
+    {
+      "source": "/firestopping",
+      "destination": "/services/firestopping",
+      "permanent": true
+    },
+    {
+      "source": "/fr/firestopping",
+      "destination": "/fr/services/firestopping",
+      "permanent": true
+    },
+    {
+      "source": "/fireproofing",
+      "destination": "/services/fireproofing",
+      "permanent": true
+    },
+    {
+      "source": "/fr/fireproofing",
+      "destination": "/fr/services/fireproofing",
+      "permanent": true
+    },
+    {
+      "source": "/drywalling",
+      "destination": "/services/drywall",
+      "permanent": true
+    },
+    {
+      "source": "/fr/drywalling",
+      "destination": "/fr/services/drywall",
+      "permanent": true
+    },
+    {
+      "source": "/contracting",
+      "destination": "/services/contracting",
+      "permanent": true
+    },
+    {
+      "source": "/fr/contracting",
+      "destination": "/fr/services/contracting",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/fr/contact-us",
+      "destination": "/fr/contact",
+      "permanent": true
+    },
+    {
+      "source": "/premiumprojects",
+      "destination": "/projects",
+      "permanent": true
+    },
+    {
+      "source": "/fr/premiumprojects",
+      "destination": "/fr/projects",
+      "permanent": true
+    },
+    {
+      "source": "/terms-conditions",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/fr/terms-conditions",
+      "destination": "/fr/terms",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/fr/privacy-policy",
+      "destination": "/fr/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/home",
+      "destination": "/fr",
+      "permanent": true
+    }
+  ]
+}

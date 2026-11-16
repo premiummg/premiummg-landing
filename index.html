@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/media/favicon-48.png?v=1">
+<link rel="apple-touch-icon" href="/media/apple-touch-icon.png?v=1">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<!-- Fonts the hero paints with (h1 black, eyebrow bold, body regular). -->
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/montserrat-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/montserrat-700.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/poppins-400.woff2">
+<!-- Everything between these markers is replaced per route at build time by
+     scripts/prerender.mjs (title, description, canonical, hreflang, Open
+     Graph, JSON-LD). What is here is only what `vite dev` shows. -->
+<!--seo-start-->
+<title>Caulking, Firestopping &amp; Fireproofing Contractor | Premium Group</title>
+<meta name="description" content="Certified caulking, firestopping, fireproofing, drywall and contracting across Atlantic Canada.">
+<!--seo-end-->
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+<div id="root"><!--app-html--></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
