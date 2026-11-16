@@ -31,7 +31,7 @@ export const EN = {
     darkMode: 'Dark mode',
   },
   area: 'Atlantic Canada / the Maritimes, including Labrador and Ottawa',
-  hours: 'Monday to Friday, 6:00am to 5:00pm',
+  hours: 'Monday to Friday, 8:00am to 5:00pm',
   address: '463 Champlain St, Dieppe, NB E1A 1P2',
   placeholder: 'To confirm',
   hero: {
