@@ -6,7 +6,7 @@ import {
 } from '@premiummg/ui';
 import { fill } from '../../copy';
 import { useT } from '../../lang';
-import { CERTS, PLACEHOLDER_IMAGE, media, photo } from '../../content/media';
+import { CERTS, PLACEHOLDER_IMAGE, imageSrc, media, photo } from '../../content/media';
 import { SERVICES } from '../../content/services';
 import { PROJECTS, PROJECT_CATEGORIES } from '../../content/projects';
 import { SORTED_POSTS, categoryLabel } from '../../content/posts';
@@ -177,7 +177,7 @@ export function Projects() {
             {shown.map((p, i) => (
               <PhotoTile
                 key={p.id}
-                imageSrc={photo(p.photo)}
+                imageSrc={imageSrc(p) ?? PLACEHOLDER_IMAGE}
                 imageAlt={p.alt}
                 eyebrow={pick(PROJECT_CATEGORIES.find(c => c.key === p.category)!.label, lang)}
                 title={p.name ? pick(p.name, lang) : t.projects.namePlaceholder}
@@ -300,7 +300,7 @@ export function BlogPreview() {
           return (
             <Reveal key={p.slug} delay={i * 80} className="h-full">
               <PostCard
-                imageSrc={p.photo ? photo(p.photo) : undefined}
+                imageSrc={imageSrc(p)}
                 imageAlt={p.photoAlt}
                 category={pick(categoryLabel(p.category), lang)}
                 title={pick(p.title, lang)}

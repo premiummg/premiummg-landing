@@ -65,9 +65,11 @@ describe('routes', () => {
     expect(titles.size).toBe(allRoutes().length);
   });
 
-  it('sample blog posts are kept out of search results', () => {
-    const sample = POSTS.find(p => p.sample)!;
-    expect(seoFor('en', `/blog/${sample.slug}`).noindex).toBe(true);
+  it('sample blog posts are kept out of search results, real ones are not', () => {
+    // POSTS is the sample set until the CMS holds an article, then the CMS's.
+    for (const post of POSTS) {
+      expect(seoFor('en', `/blog/${post.slug}`).noindex, post.slug).toBe(post.sample);
+    }
     expect(seoFor('en', '/').noindex).toBe(false);
   });
 });

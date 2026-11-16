@@ -86,7 +86,9 @@ export function seoFor(lang: Lang, path: string): PageSeo {
   } else if (post) {
     title = `${pick(post.title, lang)} | ${t.seo.siteName}`;
     description = pick(post.excerpt, lang);
-    if (post.photo) ogImage = abs(media(PHOTOS[post.photo]));
+    // CMS photos: ask the CDN for a JPEG, which every link-preview scraper reads.
+    if (post.photoUrl) ogImage = `${post.photoUrl}&fm=jpg`;
+    else if (post.photo) ogImage = abs(media(PHOTOS[post.photo]));
     ogType = 'article';
     // Sample articles exist for review only; keep them out of search results.
     noindex = post.sample;

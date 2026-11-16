@@ -6,7 +6,7 @@ import { useT } from '../lang';
 import { SORTED_POSTS, categoryLabel, postBySlug } from '../content/posts';
 import { serviceByKey } from '../content/services';
 import { pick } from '../content/l10n';
-import { photo, PLACEHOLDER_IMAGE } from '../content/media';
+import { imageSrc, PLACEHOLDER_IMAGE } from '../content/media';
 import { formatDate } from '../lib/format';
 import { POST_PATH, SERVICE_PATH } from '../lib/routes';
 import { useLinkProps, useLocaleHref } from '../lib/useLocaleHref';
@@ -56,7 +56,7 @@ export function ArticlePage() {
 
         <figure className={`${CONTAINER} flex flex-col gap-3`}>
           <img
-            src={post.photo ? photo(post.photo) : PLACEHOLDER_IMAGE}
+            src={imageSrc(post) ?? PLACEHOLDER_IMAGE}
             alt={post.photoAlt}
             width={1200}
             height={514}
@@ -142,7 +142,7 @@ export function ArticlePage() {
             return (
               <li key={p.slug} className="h-full">
                 <PostCard
-                  imageSrc={p.photo ? photo(p.photo) : undefined}
+                  imageSrc={imageSrc(p)}
                   imageAlt={p.photoAlt}
                   category={pick(categoryLabel(p.category), lang)}
                   title={pick(p.title, lang)}

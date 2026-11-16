@@ -7,7 +7,10 @@
     "node": "^26"
   },
   "scripts": {
+    "cms:pull": "node scripts/fetch-cms.mjs",
+    "predev": "node scripts/fetch-cms.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/fetch-cms.mjs",
     "build": "tsc -b && vite build && npm run build:prerender",
     "build:prerender": "vite build --ssr src/entry-prerender.tsx --outDir .prerender && node scripts/prerender.mjs",
     "preview": "vite preview",

@@ -1,17 +1,17 @@
 import type { ServiceKey } from '../formLimits';
 import type { PhotoKey } from './media';
 import type { L } from './l10n';
+import { CMS } from './cms';
 
 // The blog's articles. Every post below is SAMPLE content written for the
 // redesign: it is built only from what Premium's own pages already say, but
 // none of it has been published by Premium. `sample: true` makes the blog
-// show a visible "Sample content" tag; replace these with real posts (or
-// connect the headless CMS this file is shaped for) before launch.
+// show a visible "Sample content" tag. Real articles come from the Sanity CMS
+// (studio/), pulled at build time; once it has one, these are not used.
 //
 // The shape is deliberately CMS-friendly: a slug, a date, a category, a
-// photo, and a body made of typed blocks rather than HTML, so moving to a
-// headless CMS means writing one adapter that returns `Post[]`, not
-// rewriting the pages.
+// photo, and a body made of typed blocks rather than HTML. The Studio's
+// schema (studio/schemaTypes/post.ts) mirrors it field for field.
 
 export type Block =
   | { type: 'p'; text: L }
@@ -40,6 +40,8 @@ export interface Post {
   // The service the article sends a reader to at the end.
   service: ServiceKey;
   photo: PhotoKey | null;
+  // Set by the CMS: a full image URL that replaces `photo`.
+  photoUrl?: string;
   photoAlt: string;
   photoCaption?: L;
   readMinutes: number;
@@ -52,7 +54,7 @@ const t = (en: string, fr: string): L => ({ en, fr });
 const p = (en: string, fr: string): Block => ({ type: 'p', text: t(en, fr) });
 const h2 = (id: string, en: string, fr: string): Block => ({ type: 'h2', id, text: t(en, fr) });
 
-export const POSTS: Post[] = [
+const SAMPLE_POSTS: Post[] = [
   {
     slug: 'fireproofing-structural-steel-before-close-in',
     sample: true,
@@ -224,6 +226,9 @@ export const POSTS: Post[] = [
     ],
   },
 ];
+
+// What the CMS holds, or the sample articles above while it holds none.
+export const POSTS: Post[] = CMS.posts ?? SAMPLE_POSTS;
 
 // Newest first, whatever order they were written in above.
 export const SORTED_POSTS = [...POSTS].sort((a, b) => b.date.localeCompare(a.date));

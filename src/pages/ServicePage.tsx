@@ -6,7 +6,7 @@ import { useT } from '../lang';
 import { SERVICES, serviceByKey, type Item } from '../content/services';
 import { PROJECTS, PROJECT_CATEGORIES } from '../content/projects';
 import { pick, type L } from '../content/l10n';
-import { photo, PLACEHOLDER_IMAGE } from '../content/media';
+import { imageSrc, photo, PLACEHOLDER_IMAGE } from '../content/media';
 import { SERVICE_PATH } from '../lib/routes';
 import { useLocaleHref } from '../lib/useLocaleHref';
 import { PHONE_DISPLAY, PHONE_E164 } from '../site';
@@ -145,7 +145,7 @@ export function ServicePage() {
             {related.map(p => (
               <PhotoTile
                 key={p.id}
-                imageSrc={photo(p.photo)}
+                imageSrc={imageSrc(p) ?? PLACEHOLDER_IMAGE}
                 imageAlt={p.alt}
                 eyebrow={pick(PROJECT_CATEGORIES.find(c => c.key === p.category)!.label, lang)}
                 title={p.name ? pick(p.name, lang) : t.projects.namePlaceholder}

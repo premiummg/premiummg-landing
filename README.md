@@ -25,6 +25,35 @@ npm test      # API validation, routes, SEO, and the copy rules (no em dashes)
 npm run build # typecheck, client build, prerender every route into dist/
 ```
 
+## Content management (Sanity)
+
+Blog articles and project photos are edited in a Sanity Studio (`studio/`), not
+in code. Publishing there triggers a Vercel deploy; the build pulls the
+published content (`scripts/fetch-cms.mjs`) into
+`src/content/cms.generated.json` (gitignored) in the same `Post[]` / `Project[]`
+shapes the pages already use, and the site is prerendered as usual.
+
+- No `SANITY_PROJECT_ID`: the site keeps its built-in sample articles and
+  photos, so a fresh clone builds.
+- A project id but a failed pull, or a document missing a field (a French
+  title, a photo description): the build fails rather than publishing stale or
+  half-empty content.
+- A type with nothing published yet falls back to the samples for that type.
+- Categories and services are lists in code. Adding one means changing
+  `src/` and `studio/schemaTypes/options.ts`; `tests/cms.test.ts` fails if
+  they drift.
+- UI strings (`src/copy.ts`), legal text and the services pages stay in code.
+
+```bash
+cd studio && npm install
+cp .env.example .env.local   # SANITY_STUDIO_PROJECT_ID=...
+npm run dev                  # Studio at http://localhost:3333
+npm run deploy               # hosted at premiummg.sanity.studio
+```
+
+Set `SANITY_PROJECT_ID` and `SANITY_DATASET` in the site's `.env.local` and on
+Vercel. `npm run cms:pull` refreshes the local copy.
+
 ## Pages
 
 | URL | Source |

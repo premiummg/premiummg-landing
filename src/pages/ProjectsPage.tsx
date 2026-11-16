@@ -5,7 +5,7 @@ import { fill } from '../copy';
 import { useT } from '../lang';
 import { PROJECTS, PROJECT_CATEGORIES } from '../content/projects';
 import { pick } from '../content/l10n';
-import { photo, PLACEHOLDER_IMAGE } from '../content/media';
+import { imageSrc, PLACEHOLDER_IMAGE } from '../content/media';
 import { SERVICE_PATH } from '../lib/routes';
 import { useLocaleHref } from '../lib/useLocaleHref';
 import { ClosingCta } from '../components/ClosingCta';
@@ -51,7 +51,7 @@ export function ProjectsPage() {
               {photos.map((x, k) => (
                 <PhotoTile
                   key={x.id}
-                  imageSrc={photo(x.photo)}
+                  imageSrc={imageSrc(x) ?? PLACEHOLDER_IMAGE}
                   imageAlt={x.alt}
                   title={x.name ? pick(x.name, lang) : t.projects.namePlaceholder}
                   size={k === 0 && photos.length + placeholders > 2 ? 'feature' : 'default'}

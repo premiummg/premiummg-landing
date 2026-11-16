@@ -5,7 +5,7 @@ import { fill } from '../copy';
 import { useT } from '../lang';
 import { POST_CATEGORIES, SORTED_POSTS, categoryLabel, type CategoryKey } from '../content/posts';
 import { pick } from '../content/l10n';
-import { photo, PLACEHOLDER_IMAGE } from '../content/media';
+import { imageSrc, PLACEHOLDER_IMAGE } from '../content/media';
 import { formatDate } from '../lib/format';
 import { POST_PATH } from '../lib/routes';
 import { useLinkProps } from '../lib/useLocaleHref';
@@ -52,7 +52,7 @@ export function BlogPage() {
           <article className={`group grid lg:grid-cols-[1.25fr_1fr] rounded-2xl overflow-hidden ${CARD_ON_PANEL}`}>
             <div className="relative min-h-72 overflow-hidden">
               <img
-                src={featured.photo ? photo(featured.photo) : PLACEHOLDER_IMAGE}
+                src={imageSrc(featured) ?? PLACEHOLDER_IMAGE}
                 alt={featured.photoAlt}
                 className="absolute inset-0 w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-500 group-hover:scale-[1.04]"
               />
@@ -102,7 +102,7 @@ export function BlogPage() {
                 return (
                   <li key={p.slug} className="h-full">
                     <PostCard
-                      imageSrc={p.photo ? photo(p.photo) : undefined}
+                      imageSrc={imageSrc(p)}
                       imageAlt={p.photoAlt}
                       category={pick(categoryLabel(p.category), lang)}
                       title={pick(p.title, lang)}

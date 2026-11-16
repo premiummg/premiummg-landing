@@ -30,6 +30,11 @@ export const PHOTO_SIZE: Record<PhotoKey, { width: number; height: number }> = {
 
 export const photo = (key: PhotoKey) => webp(PHOTOS[key]);
 
+// An article's or project's picture: the CMS's own URL when an editor uploaded
+// one, otherwise one of the bundled photos.
+export const imageSrc = (item: { photo: PhotoKey | null; photoUrl?: string }) =>
+  item.photoUrl ?? (item.photo ? photo(item.photo) : undefined);
+
 export const CERTS = [
   { key: 'ul', file: 'cert-ul.jpg', href: 'https://www.ul.com/' },
   { key: 'fcia', file: 'cert-fcia.jpg', href: 'https://www.fcia.org/' },
