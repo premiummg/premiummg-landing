@@ -2,13 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import { FiMapPin } from 'react-icons/fi';
 import { Hero, StatBand } from '@premiummg/ui';
 import { useT } from '../../lang';
-import { photo } from '../../content/media';
+import { media, photo } from '../../content/media';
 import { useLocaleHref } from '../../lib/useLocaleHref';
 import { Certifications } from '../Certifications';
 
-// The facade shot from below, not the close-up spray photo the live site
-// opens with: a contractor that wants to read as a leader in its field leads
-// with the scale of the buildings it works on. Premium's own 45deg wedge is on
+// The hero film from the landing proposal (hero.mp4: muted, 720p, 1.9 MB, the
+// same film the live site streams from YouTube, self-hosted). hero-poster.jpg
+// is its first frame: it carries the hero until the film is ready and is all a
+// reduced-motion visitor gets. Premium's own 45deg wedge is on
 // (this IS a Premium page), the certifications sit inside the hero where the
 // qualifying decision is made, and the figures follow immediately below.
 export function HomeHero() {
@@ -23,7 +24,8 @@ export function HomeHero() {
         eyebrow={t.hero.eyebrow}
         title={t.hero.title}
         sub={t.hero.sub}
-        imageSrc={photo('facade')}
+        imageSrc={photo('spray')}
+        videoSrc={media('hero.mp4')}
         wedge
         primaryAction={{ label: t.hero.cta, ...go('/contact') }}
         secondaryAction={{ label: t.hero.alt, ...go('/projects') }}
