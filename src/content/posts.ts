@@ -20,12 +20,13 @@ export type Block =
   | { type: 'list'; items: L[] }
   | { type: 'takeaways'; text: L };
 
-export type CategoryKey = 'project-updates' | 'site-safety' | 'industry-trends' | ServiceKey;
+export type CategoryKey = 'project-updates' | 'site-safety' | 'industry-trends' | 'company' | ServiceKey;
 
 export const POST_CATEGORIES: { key: CategoryKey; label: L }[] = [
   { key: 'project-updates', label: { en: 'Project updates', fr: 'Nouvelles de projets' } },
   { key: 'site-safety', label: { en: 'Site safety', fr: 'Sécurité au chantier' } },
   { key: 'industry-trends', label: { en: 'Industry trends', fr: 'Tendances de l’industrie' } },
+  { key: 'company', label: { en: 'Company', fr: 'Notre entreprise' } },
   { key: 'caulking', label: { en: 'Caulking', fr: 'Calfeutrage' } },
   { key: 'firestopping', label: { en: 'Firestopping', fr: 'Coupe-feu' } },
   { key: 'fireproofing', label: { en: 'Fireproofing', fr: 'Ignifugation' } },

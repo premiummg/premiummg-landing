@@ -16,6 +16,7 @@ export const POST_CATEGORY_OPTIONS = [
   { value: 'project-updates', title: l('Project updates', 'Nouvelles de projets') },
   { value: 'site-safety', title: l('Site safety', 'Sécurité au chantier') },
   { value: 'industry-trends', title: l('Industry trends', 'Tendances de l’industrie') },
+  { value: 'company', title: l('Company', 'Notre entreprise') },
   ...SERVICE_OPTIONS.filter(s => s.value !== 'contracting'),
 ];
 
