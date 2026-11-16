@@ -60,7 +60,7 @@ export function ArticlePage() {
             alt={post.photoAlt}
             width={1200}
             height={514}
-            className="w-full aspect-[21/9] object-cover rounded-2xl"
+            className="w-full aspect-21/9 object-cover rounded-2xl"
           />
           {post.photoCaption && <figcaption className={`text-sm ${BODY}`}>{pick(post.photoCaption, lang)}</figcaption>}
         </figure>

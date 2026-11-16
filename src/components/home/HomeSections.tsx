@@ -173,7 +173,7 @@ export function Projects() {
           ))}
         </div>
         {shown.length ? (
-          <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] auto-rows-[260px]">
+          <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] auto-rows-65">
             {shown.map((p, i) => (
               <PhotoTile
                 key={p.id}
