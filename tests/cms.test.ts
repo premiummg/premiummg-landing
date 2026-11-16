@@ -3,6 +3,7 @@ import { POSTS, POST_CATEGORIES } from '../src/content/posts';
 import { PROJECTS, PROJECT_CATEGORIES } from '../src/content/projects';
 import { SERVICE_KEYS } from '../src/formLimits';
 import { pairBody, youtubeId, type PtBlock } from '../studio/schemaTypes/blocks';
+import { shareUrl } from '../src/lib/share';
 import { POST_CATEGORY_OPTIONS, PROJECT_CATEGORY_OPTIONS, SERVICE_OPTIONS } from '../studio/schemaTypes/options';
 
 const values = (o: { value: string }[]) => o.map(x => x.value).sort();
@@ -107,5 +108,14 @@ describe('videos and link buttons in articles', () => {
     expect(pairBody([link('Go', 'http://insecure.example')], [link('Aller', 'https://ok.example')])).toMatchObject({ ok: false });
     expect(pairBody([link('Go', 'javascript:alert(1)')], [link('Aller', 'https://ok.example')])).toMatchObject({ ok: false });
     expect(pairBody([blk('a'), video('https://youtu.be/ck1xR8i9M20')], [blk('a'), blk('b')])).toMatchObject({ ok: false });
+  });
+});
+
+describe('share links', () => {
+  it('encode the article address and title', () => {
+    const url = 'https://premiummg.ca/blog/a-b';
+    expect(shareUrl('linkedin', url, 'T')).toBe('https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fpremiummg.ca%2Fblog%2Fa-b');
+    expect(shareUrl('x', url, 'A & B')).toContain('text=A%20%26%20B');
+    expect(shareUrl('whatsapp', url, 'T')).toBe('https://wa.me/?text=T%20https%3A%2F%2Fpremiummg.ca%2Fblog%2Fa-b');
   });
 });

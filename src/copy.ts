@@ -275,6 +275,9 @@ export const EN = {
   articlePage: {
     inThisArticle: 'In this article',
     keyTakeaways: 'Key takeaways',
+    share: 'Share this article',
+    copyLink: 'Copy link',
+    copied: 'Link copied',
     playVideo: 'Play the video',
     newTab: 'opens in a new tab',
     back: 'Back to all articles',
@@ -592,6 +595,9 @@ export const FR: Copy = {
   articlePage: {
     inThisArticle: 'Dans cet article',
     keyTakeaways: 'À retenir',
+    share: 'Partager cet article',
+    copyLink: 'Copier le lien',
+    copied: 'Lien copié',
     playVideo: 'Lire la vidéo',
     newTab: 's’ouvre dans un nouvel onglet',
     back: 'Retour à tous les articles',

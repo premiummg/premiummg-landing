@@ -10,7 +10,9 @@ import { imageSrc, PLACEHOLDER_IMAGE } from '../content/media';
 import { formatDate } from '../lib/format';
 import { youtubeId } from '../../studio/schemaTypes/blocks';
 import { YouTubeEmbed } from '../components/YouTubeEmbed';
-import { POST_PATH, SERVICE_PATH } from '../lib/routes';
+import { ShareButtons } from '../components/ShareButtons';
+import { POST_PATH, SERVICE_PATH, localePath } from '../lib/routes';
+import { SITE_URL } from '../site';
 import { useLinkProps, useLocaleHref } from '../lib/useLocaleHref';
 import { Certifications } from '../components/Certifications';
 import { ClosingCta } from '../components/ClosingCta';
@@ -119,7 +121,11 @@ export function ArticlePage() {
                   );
               }
             })}
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-gray-200 dark:border-white/10">
+            <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-5 pt-6 border-t border-gray-200 dark:border-white/10">
+              <ShareButtons
+                url={`${SITE_URL}${localePath(lang, POST_PATH(post.slug))}`} title={pick(post.title, lang)}
+                label={a.share} copyLabel={a.copyLink} copiedLabel={a.copied} newTab={a.newTab}
+              />
               <Link to={href('/blog')} className={`inline-flex items-center gap-2 min-h-11 font-heading font-bold text-sm ${ACCENT_TEXT} hover:underline`}>{a.back}</Link>
             </div>
           </div>
