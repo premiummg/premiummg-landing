@@ -90,7 +90,15 @@ function shapes(body: PtBlock[] | undefined): Shape[] {
       if (last?.kind === 'list') last.items.push(text);
       else out.push({ kind: 'list', items: [text] });
     } else {
-      out.push({ kind: KIND[b.style ?? 'normal'] ?? 'p', text });
+      const kind = KIND[b.style ?? 'normal'] ?? 'p';
+      // Pasting several paragraphs at once can land them in ONE block with
+      // blank lines between: each of those is a paragraph of its own. Other
+      // parts (a heading, a quote) stay one part, with line breaks as spaces.
+      if (kind === 'p') {
+        for (const para of text.split(/\n\s*\n/).map(x => x.trim()).filter(Boolean)) out.push({ kind, text: para });
+      } else {
+        out.push({ kind, text: text.replace(/\s*\n\s*/g, ' ') });
+      }
     }
   }
   return out;

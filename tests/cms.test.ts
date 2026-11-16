@@ -68,6 +68,15 @@ describe('pairing the English and French article bodies', () => {
     });
   });
 
+  it('splits one pasted block with blank lines into the paragraphs it holds', () => {
+    const r = pairBody(
+      [blk('One.\n\nTwo.\n\n#Three')],
+      [blk('Un.'), blk('Deux.'), blk(''), blk('#Trois')],
+    );
+    expect(r).toMatchObject({ ok: true });
+    expect(r.ok && r.blocks.map(b => b.type)).toEqual(['p', 'p', 'p']);
+  });
+
   it('explains what is out of step instead of publishing half an article', () => {
     expect(pairBody([blk('a'), blk('b')], [blk('a')])).toMatchObject({ ok: false });
     expect(pairBody([blk('a', 'h2')], [blk('a')])).toMatchObject({ ok: false, error: expect.stringContaining('heading in English') });
