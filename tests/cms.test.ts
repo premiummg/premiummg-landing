@@ -33,10 +33,10 @@ describe('Sanity Studio stays in step with the site', () => {
 // Whatever feeds POSTS and PROJECTS (sample content or the CMS pull), the
 // pages index into the lists above by key.
 describe('the content the pages receive', () => {
-  it('every article has a known category and service, and a picture or a placeholder', () => {
+  it('every article has a known category and, when it names one, a known service', () => {
     for (const p of POSTS) {
       expect(POST_CATEGORIES.map(c => c.key), p.slug).toContain(p.category);
-      expect(SERVICE_KEYS, p.slug).toContain(p.service);
+      if (p.service) expect(SERVICE_KEYS, p.slug).toContain(p.service);
     }
   });
 

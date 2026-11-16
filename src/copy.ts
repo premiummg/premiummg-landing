@@ -286,6 +286,8 @@ export const EN = {
     authorPlaceholder: '[ Author name ]',
     cta: 'See {name}',
     ctaTitle: 'Need {name} on your project?',
+    ctaTitleGeneral: 'Planning a project?',
+    ctaBodyGeneral: 'Tell us about your project and we will reply.',
   },
   contactPage: {
     eyebrow: 'More Than Projects. We Build Relationships.',
@@ -607,6 +609,8 @@ export const FR: Copy = {
     authorPlaceholder: '[ Nom de l’auteur ]',
     cta: 'Voir {name}',
     ctaTitle: 'Besoin de {name} pour votre projet ?',
+    ctaTitleGeneral: 'Un projet en vue ?',
+    ctaBodyGeneral: 'Parlez-nous de votre projet et nous vous répondrons.',
   },
   contactPage: {
     eyebrow: 'Plus que des projets. Nous bâtissons des relations.',

@@ -30,8 +30,8 @@ export function ArticlePage() {
   if (!post) return <NotFoundPage />;
 
   const a = t.articlePage;
-  const service = serviceByKey(post.service)!;
-  const serviceName = pick(service.name, lang);
+  const service = post.service ? serviceByKey(post.service) ?? null : null;
+  const serviceName = service ? pick(service.name, lang) : '';
   const toc = post.body.filter(b => b.type === 'h2');
   const more = SORTED_POSTS.filter(p => p.slug !== post.slug).slice(0, 3);
   const P = `text-lg leading-[1.75] ${INK}`;
@@ -143,10 +143,10 @@ export function ArticlePage() {
             )}
             <ColorField className="rounded-2xl">
               <div className="p-7 flex flex-col gap-3.5">
-                <h2 className="font-heading font-black text-xl leading-tight">{fill(a.ctaTitle, { name: serviceName.toLowerCase() })}</h2>
-                <p className="text-[15px] leading-relaxed text-white/90">{t.services.unsure.body}</p>
-                <SiteButton variant="onRed" {...link(SERVICE_PATH(service.key))} className="self-start">
-                  {fill(a.cta, { name: serviceName })} <FiArrowRight size={16} aria-hidden="true" />
+                <h2 className="font-heading font-black text-xl leading-tight">{service ? fill(a.ctaTitle, { name: serviceName.toLowerCase() }) : a.ctaTitleGeneral}</h2>
+                <p className="text-[15px] leading-relaxed text-white/90">{service ? t.services.unsure.body : a.ctaBodyGeneral}</p>
+                <SiteButton variant="onRed" {...link(service ? SERVICE_PATH(service.key) : '/contact')} className="self-start">
+                  {service ? fill(a.cta, { name: serviceName }) : t.nav.cta} <FiArrowRight size={16} aria-hidden="true" />
                 </SiteButton>
               </div>
             </ColorField>

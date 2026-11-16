@@ -106,11 +106,10 @@ export const post = defineType({
     }),
     defineField({
       name: 'service',
-      title: 'Service this article leads to',
-      description: 'The service page that the closing call to action sends the reader to.',
+      title: 'Service this article leads to (optional)',
+      description: 'Only if the article is about one service: the closing card then sends the reader to that service page. Leave empty for company news or social media posts: the card then invites a general estimate request.',
       type: 'string',
       options: { list: SERVICE_OPTIONS, layout: 'dropdown' },
-      validation: rule => rule.required(),
     }),
     defineField({ name: 'excerpt', title: 'Summary', description: 'Two sentences. Shown on the blog list and in Google.', type: 'localizedText' }),
     defineField({ name: 'image', title: 'Cover photo', type: 'image', options: { hotspot: true } }),

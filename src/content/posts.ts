@@ -40,8 +40,10 @@ export interface Post {
   sample: boolean;
   date: string; // YYYY-MM-DD
   category: CategoryKey;
-  // The service the article sends a reader to at the end.
-  service: ServiceKey;
+  // The service the article sends a reader to at the end. Null for posts that
+  // are not about a service (company news, social media): the closing card
+  // then invites a general estimate request.
+  service: ServiceKey | null;
   photo: PhotoKey | null;
   // Set by the CMS: a full image URL that replaces `photo`.
   photoUrl?: string;

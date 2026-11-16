@@ -82,7 +82,7 @@ function mapBody(p, id) {
 
 const posts = result.posts.map((p) => {
   const id = p.slug;
-  for (const k of ['date', 'category', 'service', 'readMinutes']) if (p[k] == null) fail(`"${k}" is empty`, id);
+  for (const k of ['date', 'category', 'readMinutes']) if (p[k] == null) fail(`"${k}" is empty`, id);
   if (p.photoUrl && !p.imageAlt) fail('the cover photo has no description', id);
   const body = mapBody(p, id);
   return {
@@ -90,7 +90,7 @@ const posts = result.posts.map((p) => {
     sample: false,
     date: p.date,
     category: p.category,
-    service: p.service,
+    service: p.service ?? null,
     photo: null,
     ...(p.photoUrl ? { photoUrl: img(p.photoUrl) } : {}),
     photoAlt: p.imageAlt ?? '',
