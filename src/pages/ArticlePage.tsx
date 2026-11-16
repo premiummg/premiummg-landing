@@ -36,15 +36,6 @@ export function ArticlePage() {
     <>
       <article aria-labelledby="h-article" className={BAND_PANEL}>
         <header className={`${CONTAINER} pt-12 md:pt-16 pb-10 flex flex-col gap-5`}>
-          <nav aria-label={t.breadcrumb.label}>
-            <ol className={`flex flex-wrap items-center gap-2 text-sm ${BODY}`}>
-              <li><Link to={href('/')} className={`inline-flex min-h-7 items-center ${INK} hover:underline`}>{t.breadcrumb.home}</Link></li>
-              <li aria-hidden="true">/</li>
-              <li><Link to={href('/blog')} className={`inline-flex min-h-7 items-center ${INK} hover:underline`}>{t.nav.blog}</Link></li>
-              <li aria-hidden="true">/</li>
-              <li aria-current="page">{pick(categoryLabel(post.category), lang)}</li>
-            </ol>
-          </nav>
           <div className="flex flex-wrap items-center gap-3">
             <p className={`pmg-eyebrow text-xs ${ACCENT_TEXT}`}>{pick(categoryLabel(post.category), lang)}</p>
             {post.sample && <SampleTag />}

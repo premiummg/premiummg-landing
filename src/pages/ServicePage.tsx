@@ -10,7 +10,6 @@ import { photo, PLACEHOLDER_IMAGE } from '../content/media';
 import { SERVICE_PATH } from '../lib/routes';
 import { useLocaleHref } from '../lib/useLocaleHref';
 import { PHONE_DISPLAY, PHONE_E164 } from '../site';
-import { Breadcrumb } from '../components/Breadcrumb';
 import { CertStrip } from '../components/CertStrip';
 import { ClosingCta } from '../components/ClosingCta';
 import { Section, SectionHeading } from '../components/Section';
@@ -121,7 +120,6 @@ export function ServicePage() {
         title={pick(service.h1, lang)}
         sub={pick(service.intro, lang)}
         imageSrc={service.photo ? photo(service.photo) : PLACEHOLDER_IMAGE}
-        breadcrumb={<Breadcrumb trail={[{ label: t.nav.services }, { label: name }]} />}
         primaryAction={{ label: t.nav.cta, href: href('/contact') }}
         secondaryAction={{ label: <span className="inline-flex items-center gap-2"><FiPhone size={15} aria-hidden="true" /> {PHONE_DISPLAY}</span>, href: `tel:${PHONE_E164}` }}
       >

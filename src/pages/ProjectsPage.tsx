@@ -25,7 +25,7 @@ export function ProjectsPage() {
 
   return (
     <>
-      <PageHeader crumb={[{ label: t.nav.projects }]} eyebrow={p.eyebrow} title={p.title} sub={p.sub}>
+      <PageHeader eyebrow={p.eyebrow} title={p.title} sub={p.sub}>
         <nav aria-label={p.jump} className="flex flex-wrap gap-2.5 pt-2">
           {withPhotos.map(c => (
             <a key={c.key} href={`#${c.key}`} className="inline-flex items-center gap-2 min-h-11 px-4.5 rounded-full border border-white/70 hover:border-white font-heading font-bold text-[13px] text-white">

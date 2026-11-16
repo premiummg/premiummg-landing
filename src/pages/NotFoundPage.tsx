@@ -10,7 +10,7 @@ export function NotFoundPage() {
   const link = useLinkProps();
   return (
     <>
-      <PageHeader crumb={[{ label: t.notFound.eyebrow }]} eyebrow={t.notFound.eyebrow} title={t.notFound.title} sub={t.notFound.sub} />
+      <PageHeader eyebrow={t.notFound.eyebrow} title={t.notFound.title} sub={t.notFound.sub} />
       <div className={BAND_PANEL}>
         <div className={`${CONTAINER} py-16`}>
           <SiteButton {...link('/')}>{t.notFound.cta} <FiArrowRight size={16} aria-hidden="true" /></SiteButton>

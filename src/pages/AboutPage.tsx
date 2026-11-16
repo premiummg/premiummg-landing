@@ -6,7 +6,6 @@ import { TEAM, CREDENTIALS, AFFILIATIONS } from '../content/team';
 import { CERTS, media, photo, PLACEHOLDER_IMAGE } from '../content/media';
 import { pick } from '../content/l10n';
 import { useLocaleHref } from '../lib/useLocaleHref';
-import { Breadcrumb } from '../components/Breadcrumb';
 import { ClosingCta } from '../components/ClosingCta';
 import { Section, SectionHeading } from '../components/Section';
 import { ACCENT_TEXT, BODY, CARD_ON_GROUND, CARD_ON_PANEL, INK } from '../components/ui';
@@ -35,7 +34,6 @@ export function AboutPage() {
         title={a.title}
         sub={a.sub}
         imageSrc={photo('lift')}
-        breadcrumb={<Breadcrumb trail={[{ label: t.nav.about }]} />}
         primaryAction={{ label: t.nav.cta, href: href('/contact') }}
       />
 

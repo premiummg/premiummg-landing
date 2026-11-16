@@ -35,7 +35,7 @@ export function ContactPage() {
 
   return (
     <>
-      <PageHeader crumb={[{ label: t.nav.contact }]} eyebrow={c.eyebrow} title={c.title} sub={c.sub} />
+      <PageHeader eyebrow={c.eyebrow} title={c.title} sub={c.sub} />
 
       <Section tone="ground" labelledBy="h-info">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16 items-start">

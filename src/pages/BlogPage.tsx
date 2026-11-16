@@ -42,7 +42,7 @@ export function BlogPage() {
 
   return (
     <>
-      <PageHeader crumb={[{ label: t.nav.blog }]} eyebrow={b.eyebrow} title={b.title} sub={b.sub}>
+      <PageHeader eyebrow={b.eyebrow} title={b.title} sub={b.sub}>
         {SORTED_POSTS.some(p => p.sample) && <SampleTag />}
       </PageHeader>
 

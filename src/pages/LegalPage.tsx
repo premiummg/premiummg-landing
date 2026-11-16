@@ -18,7 +18,7 @@ export function LegalPage({ doc }: { doc: 'terms' | 'privacy' }) {
 
   return (
     <>
-      <PageHeader crumb={[{ label: title }]} eyebrow={t.legal.eyebrow} title={title} sub={pick(d.updated, lang)} />
+      <PageHeader eyebrow={t.legal.eyebrow} title={title} sub={pick(d.updated, lang)} />
       <section aria-label={title} className={BAND_PANEL}>
         <div className={`${CONTAINER} pt-16 pb-22 flex flex-wrap items-start gap-x-18 gap-y-10`}>
           <nav aria-labelledby="h-onpage" className={`flex-[1_1_260px] max-w-sm p-6 rounded-2xl ${CARD_ON_PANEL} flex flex-col gap-3 lg:sticky lg:top-36`}>
