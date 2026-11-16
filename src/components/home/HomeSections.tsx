@@ -44,9 +44,9 @@ export function Credentials() {
           {CERTS.map((c, i) => (
             <li key={c.key} className="h-full">
               <Reveal delay={i * 70} className="h-full">
-                <a href={c.href} target="_blank" rel="noopener noreferrer" className={`h-full flex items-center gap-4 p-4 rounded-xl ${CARD_ON_PANEL} hover:shadow-md motion-safe:transition-shadow`}>
-                  <span className="w-21 h-21 shrink-0 rounded-lg bg-white p-1.5 grid place-items-center">
-                    <img src={media(c.file)} alt={`${t.certs[c.key].name} logo`} width={260} height={260} loading="lazy" className="max-w-full max-h-full object-contain" />
+                <a href={c.href} target="_blank" rel="noopener noreferrer" className={`group h-full flex items-center gap-4 p-4 rounded-xl border border-transparent ${CARD_ON_PANEL} hover:border-(--premium-red) hover:shadow-lg motion-safe:hover:-translate-y-1 motion-safe:transition-all motion-safe:duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--premium-red)`}>
+                  <span className="w-21 h-21 shrink-0 rounded-lg bg-white p-1.5 grid place-items-center overflow-hidden">
+                    <img src={media(c.file)} alt={`${t.certs[c.key].name} logo`} width={260} height={260} loading="lazy" className="max-w-full max-h-full object-contain motion-safe:transition-transform motion-safe:duration-300 group-hover:scale-110" />
                   </span>
                   <span className="flex flex-col gap-1">
                     <span className={`font-heading font-extrabold ${INK}`}>{t.certs[c.key].name}</span>

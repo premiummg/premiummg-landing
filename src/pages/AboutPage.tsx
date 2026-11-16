@@ -119,9 +119,9 @@ export function AboutPage() {
             const cert = CERTS.find(x => x.key === c.key)!;
             return (
               <li key={c.key}>
-                <a href={cert.href} target="_blank" rel="noopener noreferrer" className={`h-full flex flex-col gap-4 p-7 rounded-2xl ${CARD_ON_GROUND} hover:-translate-y-1 hover:shadow-lg motion-safe:transition-all`}>
-                  <span className="w-28 h-28 rounded-xl bg-white p-2 grid place-items-center border border-gray-200">
-                    <img src={media(cert.file)} alt={`${t.certs[c.key].name} logo`} width={260} height={260} loading="lazy" className="max-w-full max-h-full object-contain" />
+                <a href={cert.href} target="_blank" rel="noopener noreferrer" className={`group h-full flex flex-col gap-4 p-7 rounded-2xl border border-transparent ${CARD_ON_GROUND} hover:border-(--premium-red) hover:-translate-y-1 hover:shadow-lg motion-safe:transition-all`}>
+                  <span className="w-28 h-28 rounded-xl bg-white p-2 grid place-items-center border border-gray-200 overflow-hidden">
+                    <img src={media(cert.file)} alt={`${t.certs[c.key].name} logo`} width={260} height={260} loading="lazy" className="max-w-full max-h-full object-contain motion-safe:transition-transform motion-safe:duration-300 group-hover:scale-110" />
                   </span>
                   <span className={`font-heading font-extrabold text-lg leading-snug ${INK}`}>{pick(c.title, lang)}</span>
                   <span className={`text-[15px] leading-relaxed ${BODY}`}>{pick(c.body, lang)}</span>
