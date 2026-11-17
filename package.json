@@ -8,6 +8,8 @@
   },
   "scripts": {
     "cms:pull": "node scripts/fetch-cms.mjs",
+    "cms:seed-copy": "node scripts/seed-copy.mjs",
+    "copy:shape": "node scripts/gen-copy-shape.mjs",
     "predev": "node scripts/fetch-cms.mjs",
     "dev": "vite",
     "prebuild": "node scripts/fetch-cms.mjs",

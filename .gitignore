@@ -11,3 +11,6 @@ dist
 
 # Written by scripts/fetch-cms.mjs from Sanity at build time.
 src/content/cms.generated.json
+
+# Built by scripts/seed-copy.mjs and gen-copy-shape.mjs.
+.seed
