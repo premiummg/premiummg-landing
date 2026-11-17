@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { FiArrowRight, FiCheck, FiClock, FiExternalLink } from 'react-icons/fi';
+import { FiArrowRight, FiClock } from 'react-icons/fi';
 import { ColorField, PostCard, SiteButton } from '@premiummg/ui';
 import { fill } from '../copy';
 import { useT } from '../lang';
@@ -8,8 +8,7 @@ import { serviceByKey } from '../content/services';
 import { pick } from '../content/l10n';
 import { imageSrc, PLACEHOLDER_IMAGE } from '../content/media';
 import { formatDate } from '../lib/format';
-import { youtubeId } from '../../studio/schemaTypes/blocks';
-import { YouTubeEmbed } from '../components/YouTubeEmbed';
+import { Blocks } from '../components/Blocks';
 import { ShareButtons } from '../components/ShareButtons';
 import { POST_PATH, SERVICE_PATH, localePath } from '../lib/routes';
 import { COMPANY_NAME, SITE_URL } from '../site';
@@ -38,7 +37,6 @@ export function ArticlePage() {
     : 'PG';
   const toc = post.body.filter(b => b.type === 'h2');
   const more = SORTED_POSTS.filter(p => p.slug !== post.slug).slice(0, 3);
-  const P = `text-lg leading-[1.75] ${INK}`;
 
   return (
     <>
@@ -75,56 +73,7 @@ export function ArticlePage() {
 
         <div className={`${CONTAINER} pt-14 pb-20 md:pb-24 flex flex-wrap items-start gap-x-18 gap-y-12`}>
           <div className="flex-[999_1_560px] min-w-0 max-w-3xl flex flex-col gap-6">
-            {post.body.map((block, i) => {
-              switch (block.type) {
-                case 'p':
-                  return <p key={i} className={P}>{pick(block.text, lang)}</p>;
-                case 'h2':
-                  return <h2 key={i} id={block.id} className={`scroll-mt-32 mt-4 font-heading font-black text-2xl md:text-3xl leading-tight ${INK}`}>{pick(block.text, lang)}</h2>;
-                case 'quote':
-                  return (
-                    <blockquote key={i} className={`pmg-bracket my-2 font-heading font-extrabold text-xl md:text-2xl leading-snug text-balance ${INK}`}>
-                      {pick(block.text, lang)}
-                    </blockquote>
-                  );
-                case 'list':
-                  return (
-                    <ul key={i} className="flex flex-col gap-3">
-                      {block.items.map((it, k) => (
-                        <li key={k} className={`flex items-start gap-3 text-[17px] leading-relaxed ${INK}`}>
-                          <span className="w-6.5 h-6.5 mt-0.5 shrink-0 rounded-lg grid place-items-center bg-(--premium-red-light) dark:bg-(--premium-red)/20">
-                            <FiCheck size={15} aria-hidden="true" className={ACCENT_TEXT} />
-                          </span>
-                          {pick(it, lang)}
-                        </li>
-                      ))}
-                    </ul>
-                  );
-                case 'video': {
-                  const id = youtubeId(pick(block.url, lang));
-                  return id ? <YouTubeEmbed key={i} id={id} title={pick(post.title, lang)} playLabel={a.playVideo} /> : null;
-                }
-                case 'link':
-                  return (
-                    <p key={i}>
-                      <a
-                        href={pick(block.url, lang)} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2.5 min-h-12 px-6 rounded-lg font-heading font-bold text-white bg-(--premium-red) hover:bg-(--premium-red-dark) motion-safe:transition-colors"
-                      >
-                        {pick(block.label, lang)} <FiExternalLink size={16} aria-hidden="true" />
-                        <span className="sr-only">({a.newTab})</span>
-                      </a>
-                    </p>
-                  );
-                case 'takeaways':
-                  return (
-                    <aside key={i} aria-labelledby="h-takeaways" className="mt-4 p-8 flex flex-col gap-3 bg-(--premium-light-grey) dark:bg-(--premium-steel-grey)" style={{ clipPath: 'polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%)' }}>
-                      <h2 id="h-takeaways" className={`font-heading font-black text-xl ${INK}`}>{a.keyTakeaways}</h2>
-                      <p className={`text-base leading-relaxed ${BODY}`}>{pick(block.text, lang)}</p>
-                    </aside>
-                  );
-              }
-            })}
+            <Blocks blocks={post.body} title={pick(post.title, lang)} />
             <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-5 pt-6 border-t border-gray-200 dark:border-white/10">
               <ShareButtons
                 url={`${SITE_URL}${localePath(lang, POST_PATH(post.slug))}`} title={pick(post.title, lang)}
