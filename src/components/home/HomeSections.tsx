@@ -6,7 +6,7 @@ import {
 } from '@premiummg/ui';
 import { fill } from '../../copy';
 import { useT } from '../../lang';
-import { CERTS, PLACEHOLDER_IMAGE, imageSrc, media, photo } from '../../content/media';
+import { CERTS, PLACEHOLDER_IMAGE, certLogo, imageSrc, photo } from '../../content/media';
 import { SERVICES } from '../../content/services';
 import { PROJECTS, PROJECT_CATEGORIES } from '../../content/projects';
 import { SORTED_POSTS, categoryLabel } from '../../content/posts';
@@ -46,7 +46,7 @@ export function Credentials() {
               <Reveal delay={i * 70} className="h-full">
                 <a href={c.href} target="_blank" rel="noopener noreferrer" className={`group h-full flex items-center gap-4 p-4 rounded-xl border border-transparent ${CARD_ON_PANEL} hover:border-(--premium-red) hover:shadow-lg motion-safe:hover:-translate-y-1 motion-safe:transition-all motion-safe:duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--premium-red)`}>
                   <span className="w-21 h-21 shrink-0 rounded-lg bg-white p-1.5 grid place-items-center overflow-hidden">
-                    <img src={media(c.file)} alt={`${t.certs[c.key].name} logo`} width={260} height={260} loading="lazy" className="max-w-full max-h-full object-contain motion-safe:transition-transform motion-safe:duration-300 group-hover:scale-110" />
+                    <img src={certLogo(c)} alt={`${t.certs[c.key].name} logo`} width={260} height={260} loading="lazy" className="max-w-full max-h-full object-contain motion-safe:transition-transform motion-safe:duration-300 group-hover:scale-110" />
                   </span>
                   <span className="flex flex-col gap-1">
                     <span className={`font-heading font-extrabold ${INK}`}>{t.certs[c.key].name}</span>
@@ -107,8 +107,8 @@ export function Services() {
           return (
             <Reveal key={s.key} delay={i * 70} className="h-full">
               <MediaCard
-                imageSrc={s.photo ? photo(s.photo) : PLACEHOLDER_IMAGE}
-                imageAlt={s.photo ? s.photoAlt : `${t.placeholder}: ${s.photoAlt}`}
+                imageSrc={imageSrc(s) ?? PLACEHOLDER_IMAGE}
+                imageAlt={imageSrc(s) ? s.photoAlt : `${t.placeholder}: ${s.photoAlt}`}
                 title={name}
                 aspect="wide"
                 tag={String(i + 1).padStart(2, '0')}

@@ -13,6 +13,7 @@
       "vite/client"
     ],
     "skipLibCheck": true,
+    "resolveJsonModule": true,
     "strict": true,
     "noEmit": true
   },
@@ -21,6 +22,9 @@
     "tests",
     "studio/schemaTypes/options.ts",
     "studio/schemaTypes/blocks.ts",
+    "studio/schemaTypes/copyShape.ts",
+    "studio/schemaTypes/contentModel.ts",
+    "studio/schemaTypes/copy-shape.json",
     "src/**/*.ts"
   ],
   "exclude": [

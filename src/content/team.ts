@@ -1,15 +1,16 @@
 import type { L } from './l10n';
+import { CMS } from './cms';
 
 // The team as listed on premiummg.ca/about-us. No portraits exist yet except
 // Denis's, so each person shows initials until a photo is supplied.
 export interface TeamGroup {
   title: L;
-  people: { name: string; role: L }[];
+  people: { name: string; role: L; photoUrl?: string }[];
 }
 
 const t = (en: string, fr: string): L => ({ en, fr });
 
-export const TEAM: TeamGroup[] = [
+export const DEFAULT_TEAM: TeamGroup[] = [
   { title: t('CEO', 'Chef de la direction'), people: [{ name: 'Denis Collin', role: t('Founder | CEO', 'Fondateur | Chef de la direction') }] },
   {
     title: t('Directors of Operations', 'Directeurs des opérations'),
@@ -44,7 +45,7 @@ export const TEAM: TeamGroup[] = [
   },
 ];
 
-export const CREDENTIALS: { key: 'ul' | 'fcia' | 'cor' | 'nfca'; title: L; body: L }[] = [
+export const DEFAULT_CREDENTIALS: { key: 'ul' | 'fcia' | 'cor' | 'nfca'; title: L; body: L }[] = [
   { key: 'ul', title: t('UL Solutions: Qualified Firestop Contractor', 'UL Solutions : entrepreneur coupe-feu qualifié'), body: t('The highest accreditation for firestop contractors.', 'La plus haute accréditation pour les entrepreneurs en coupe-feu.') },
   { key: 'fcia', title: t('Firestop Contractors International Association', 'Firestop Contractors International Association'), body: t('Active member for 5 years, current on fire safety practices worldwide.', 'Membre actif depuis 5 ans, à jour sur les pratiques de sécurité incendie dans le monde.') },
   { key: 'cor', title: t('Certified Construction Safety Association', 'Association de sécurité de la construction, certifié'), body: t('Certified under the Certificate of Recognition (COR) program, across Atlantic Canada.', 'Certifié dans le cadre du programme de Certificat de reconnaissance (COR), partout au Canada atlantique.') },
@@ -53,4 +54,9 @@ export const CREDENTIALS: { key: 'ul' | 'fcia' | 'cor' | 'nfca'; title: L; body:
 
 // Suppliers and associations shown on the live About page. Their logo files
 // aren't in the repo yet, so the page shows a named placeholder for each.
-export const AFFILIATIONS = ['UL Solutions', 'Arrow', 'Carboline', 'NUCO', 'Tremco', 'STI', 'COR'];
+export const DEFAULT_AFFILIATIONS = ['UL Solutions', 'Arrow', 'Carboline', 'NUCO', 'Tremco', 'STI', 'COR'];
+
+// The Studio's version when it holds one, otherwise the lists above.
+export const TEAM: TeamGroup[] = CMS.team ?? DEFAULT_TEAM;
+export const CREDENTIALS: typeof DEFAULT_CREDENTIALS = (CMS.credentials?.items as typeof DEFAULT_CREDENTIALS | null | undefined) ?? DEFAULT_CREDENTIALS;
+export const AFFILIATIONS: readonly string[] = CMS.credentials?.affiliations ?? DEFAULT_AFFILIATIONS;

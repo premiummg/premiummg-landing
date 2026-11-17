@@ -10,6 +10,8 @@
 // Never write an em dash in this file: the brand doesn't use them.
 
 import { COMPANY_EMAIL, PHONE_DISPLAY } from './site';
+import { CMS } from './content/cms';
+import { mergeCopy } from '../studio/schemaTypes/copyShape';
 
 export type Lang = 'en' | 'fr';
 
@@ -657,7 +659,12 @@ export const FR: Copy = {
   },
 };
 
-export const COPY: Record<Lang, Copy> = { en: EN, fr: FR };
+// EN and FR are the defaults; whatever the Studio holds is laid over them
+// (see mergeCopy). With nothing in the CMS this is exactly EN and FR.
+export const COPY: Record<Lang, Copy> = {
+  en: mergeCopy(EN, CMS.copy?.en),
+  fr: mergeCopy(FR, CMS.copy?.fr),
+};
 
 /** Fills `{name}`-style slots in a copy string. */
 export function fill(template: string, values: Record<string, string | number>): string {

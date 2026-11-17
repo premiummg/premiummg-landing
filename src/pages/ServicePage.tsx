@@ -6,7 +6,7 @@ import { useT } from '../lang';
 import { SERVICES, serviceByKey, type Item } from '../content/services';
 import { PROJECTS, PROJECT_CATEGORIES } from '../content/projects';
 import { pick, type L } from '../content/l10n';
-import { imageSrc, photo, PLACEHOLDER_IMAGE } from '../content/media';
+import { imageSrc, PLACEHOLDER_IMAGE } from '../content/media';
 import { SERVICE_PATH } from '../lib/routes';
 import { useLocaleHref } from '../lib/useLocaleHref';
 import { PHONE_DISPLAY, PHONE_E164 } from '../site';
@@ -119,7 +119,7 @@ export function ServicePage() {
         eyebrow={name}
         title={pick(service.h1, lang)}
         sub={pick(service.intro, lang)}
-        imageSrc={service.photo ? photo(service.photo) : PLACEHOLDER_IMAGE}
+        imageSrc={imageSrc(service) ?? PLACEHOLDER_IMAGE}
         primaryAction={{ label: t.nav.cta, href: href('/contact') }}
         secondaryAction={{ label: <span className="inline-flex items-center gap-2"><FiPhone size={15} aria-hidden="true" /> {PHONE_DISPLAY}</span>, href: `tel:${PHONE_E164}` }}
       >

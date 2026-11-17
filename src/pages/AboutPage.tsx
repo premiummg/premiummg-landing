@@ -3,7 +3,7 @@ import type { IconType } from 'react-icons';
 import { Hero, PortraitFigure, Reveal, initials } from '@premiummg/ui';
 import { useT } from '../lang';
 import { TEAM, CREDENTIALS, AFFILIATIONS } from '../content/team';
-import { CERTS, media, photo, PLACEHOLDER_IMAGE } from '../content/media';
+import { CERTS, certLogo, photo, PLACEHOLDER_IMAGE } from '../content/media';
 import { pick } from '../content/l10n';
 import { useLocaleHref } from '../lib/useLocaleHref';
 import { ClosingCta } from '../components/ClosingCta';
@@ -93,8 +93,8 @@ export function AboutPage() {
               <ul className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))]">
                 {group.people.map(person => (
                   <li key={person.name} className={`flex items-center gap-4 p-5 rounded-2xl ${CARD_ON_PANEL}`}>
-                    {person.name === 'Denis Collin' ? (
-                      <img src={photo('denis')} alt="" width={800} height={1200} className="w-18 h-18 shrink-0 rounded-xl object-cover object-top" />
+                    {person.photoUrl || person.name === 'Denis Collin' ? (
+                      <img src={person.photoUrl ?? photo('denis')} alt="" width={800} height={1200} className="w-18 h-18 shrink-0 rounded-xl object-cover object-top" />
                     ) : (
                       <span aria-hidden="true" className="w-18 h-18 shrink-0 rounded-xl grid place-items-center bg-(--premium-steel-grey) text-white font-heading font-extrabold text-xl">
                         {initials(person.name)}
@@ -121,7 +121,7 @@ export function AboutPage() {
               <li key={c.key}>
                 <a href={cert.href} target="_blank" rel="noopener noreferrer" className={`group h-full flex flex-col gap-4 p-7 rounded-2xl border border-transparent ${CARD_ON_GROUND} hover:border-(--premium-red) hover:-translate-y-1 hover:shadow-lg motion-safe:transition-all`}>
                   <span className="w-28 h-28 rounded-xl bg-white p-2 grid place-items-center border border-gray-200 overflow-hidden">
-                    <img src={media(cert.file)} alt={`${t.certs[c.key].name} logo`} width={260} height={260} loading="lazy" className="max-w-full max-h-full object-contain motion-safe:transition-transform motion-safe:duration-300 group-hover:scale-110" />
+                    <img src={certLogo(cert)} alt={`${t.certs[c.key].name} logo`} width={260} height={260} loading="lazy" className="max-w-full max-h-full object-contain motion-safe:transition-transform motion-safe:duration-300 group-hover:scale-110" />
                   </span>
                   <span className={`font-heading font-extrabold text-lg leading-snug ${INK}`}>{pick(c.title, lang)}</span>
                   <span className={`text-[15px] leading-relaxed ${BODY}`}>{pick(c.body, lang)}</span>

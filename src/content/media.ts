@@ -2,6 +2,8 @@
 // next to the JPEG it came from. The JPEGs stay: they are what og:image and
 // the JSON-LD point at, because several link-preview scrapers still don't
 // read WebP.
+import { CMS } from './cms';
+
 export const MEDIA = '/media';
 export const media = (file: string) => `${MEDIA}/${file}`;
 export const webp = (file: string) => media(file.replace(/\.(jpe?g|png)$/i, '.webp'));
@@ -28,7 +30,22 @@ export const PHOTO_SIZE: Record<PhotoKey, { width: number; height: number }> = {
   denis: { width: 800, height: 1200 },
 };
 
-export const photo = (key: PhotoKey) => webp(PHOTOS[key]);
+// The Studio's Media document can replace any of these: its URL when an editor
+// uploaded one, otherwise the bundled file. An empty field keeps the bundled
+// photo, so nothing on the site can end up without a picture.
+export const photo = (key: PhotoKey) => CMS.media?.photos?.[key] ?? webp(PHOTOS[key]);
+
+/** The same, as an absolute-able JPEG for link previews and structured data. */
+export const photoJpg = (key: PhotoKey) => {
+  const u = CMS.media?.photos?.[key];
+  return u ? `${u}&fm=jpg` : media(PHOTOS[key]);
+};
+
+/** The logo of one of the four certifications. */
+export const certLogo = (c: { key: string; file: string }) => CMS.media?.certs?.[c.key] ?? media(c.file);
+
+/** The home hero's film. */
+export const HERO_VIDEO = CMS.media?.heroVideo ?? media('hero.mp4');
 
 // An article's or project's picture: the CMS's own URL when an editor uploaded
 // one, otherwise one of the bundled photos.

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { FiMapPin } from 'react-icons/fi';
 import { Hero, StatBand } from '@premiummg/ui';
 import { useT } from '../../lang';
-import { media, photo } from '../../content/media';
+import { HERO_VIDEO, photo } from '../../content/media';
 import { useLocaleHref } from '../../lib/useLocaleHref';
 import { Certifications } from '../Certifications';
 
@@ -25,7 +25,7 @@ export function HomeHero() {
         title={t.hero.title}
         sub={t.hero.sub}
         imageSrc={photo('spray')}
-        videoSrc={media('hero.mp4')}
+        videoSrc={HERO_VIDEO}
         wedge
         primaryAction={{ label: t.hero.cta, ...go('/contact') }}
         secondaryAction={{ label: t.hero.alt, ...go('/projects') }}

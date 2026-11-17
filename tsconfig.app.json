@@ -18,5 +18,5 @@
     "types": ["vite/client"],
     "noEmit": true
   },
-  "include": ["src", "studio/schemaTypes/blocks.ts"]
+  "include": ["src", "studio/schemaTypes/blocks.ts", "studio/schemaTypes/copyShape.ts", "studio/schemaTypes/contentModel.ts"]
 }

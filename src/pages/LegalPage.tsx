@@ -6,6 +6,7 @@ import { pick } from '../content/l10n';
 import { useLocaleHref } from '../lib/useLocaleHref';
 import { COMPANY_EMAIL } from '../site';
 import { PageHeader } from '../components/PageHeader';
+import { Blocks } from '../components/Blocks';
 import { ACCENT_TEXT, BAND_PANEL, BODY, CARD_ON_PANEL, CONTAINER, INK } from '../components/ui';
 
 export function LegalPage({ doc }: { doc: 'terms' | 'privacy' }) {
@@ -28,7 +29,7 @@ export function LegalPage({ doc }: { doc: 'terms' | 'privacy' }) {
                 <li key={i}>
                   <a href={`#s-${i + 1}`} className={`flex items-center gap-2.5 min-h-10 text-[15px] ${INK} hover:underline`}>
                     <span className={`pmg-figure font-extrabold ${ACCENT_TEXT}`}>{String(i + 1).padStart(2, '0')}</span>
-                    {pick(s, lang)}
+                    {pick(s.title, lang)}
                   </a>
                 </li>
               ))}
@@ -42,9 +43,13 @@ export function LegalPage({ doc }: { doc: 'terms' | 'privacy' }) {
               <section key={i} id={`s-${i + 1}`} aria-labelledby={`hs-${i + 1}`} className="scroll-mt-32 flex flex-col gap-3.5 pb-8 border-b border-gray-200 dark:border-white/10">
                 <h2 id={`hs-${i + 1}`} className={`flex items-baseline gap-3.5 font-heading font-black text-xl md:text-2xl ${INK}`}>
                   <span aria-hidden="true" className={`pmg-figure ${ACCENT_TEXT}`}>{String(i + 1).padStart(2, '0')}</span>
-                  {pick(s, lang)}
+                  {pick(s.title, lang)}
                 </h2>
-                <p className={`px-5 py-4 rounded-xl border border-dashed border-gray-400 dark:border-white/40 text-base leading-relaxed ${BODY}`}>{t.legal.pendingText}</p>
+                {s.body ? (
+                  <div className="flex flex-col gap-4"><Blocks blocks={s.body} title={pick(s.title, lang)} headingTag="h3" /></div>
+                ) : (
+                  <p className={`px-5 py-4 rounded-xl border border-dashed border-gray-400 dark:border-white/40 text-base leading-relaxed ${BODY}`}>{t.legal.pendingText}</p>
+                )}
               </section>
             ))}
             <p className={`text-base ${BODY}`}>

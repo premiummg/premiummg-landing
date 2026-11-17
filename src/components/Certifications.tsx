@@ -1,6 +1,6 @@
 import { CredentialBadges, type CredentialBadgesSize } from '@premiummg/ui';
 import { useT } from '../lang';
-import { CERTS, media } from '../content/media';
+import { CERTS, certLogo } from '../content/media';
 
 // The four marks Premium is proudest of (UL, FCIA, COR, NFCA), wired to
 // @premiummg/ui's CredentialBadges with their names in the visitor's
@@ -15,7 +15,7 @@ export function Certifications({ size = 'md', bordered = false, className = '' }
       size={size}
       bordered={bordered}
       className={className}
-      items={CERTS.map(c => ({ src: media(c.file), name: t.certs[c.key].name, href: c.href }))}
+      items={CERTS.map(c => ({ src: certLogo(c), name: t.certs[c.key].name, href: c.href }))}
     />
   );
 }

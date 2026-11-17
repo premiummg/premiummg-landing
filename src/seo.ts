@@ -2,12 +2,15 @@ import { COPY, fill, type Lang } from './copy';
 import { SERVICES } from './content/services';
 import { postBySlug, categoryLabel } from './content/posts';
 import { pick } from './content/l10n';
-import { media, PHOTOS } from './content/media';
+import { photoJpg } from './content/media';
 import { localePath, FR_PREFIX } from './lib/routes';
 import { SOCIAL } from './content/social';
 import { ADDRESS, BRAND_NAME, COMPANY_EMAIL, LEGAL_NAME, PHONE_E164, SITE_URL } from './site';
 
 const abs = (path: string) => `${SITE_URL}${path}`;
+// A bundled picture is a path on this site; one uploaded in the Studio is
+// already a full address.
+const absImage = (src: string) => (src.startsWith('http') ? src : abs(src));
 const ORG_ID = `${SITE_URL}/#organization`;
 
 // One @id shared by every page's graph, so both language trees and every
@@ -21,7 +24,7 @@ function organization(lang: Lang) {
     description: COPY[lang].seo.organizationDescription,
     url: abs(localePath(lang, '/')),
     logo: abs('/media/logo-horizontal-light.png'),
-    image: abs(media(PHOTOS.facade)),
+    image: absImage(photoJpg('facade')),
     telephone: PHONE_E164,
     email: COMPANY_EMAIL,
     founder: { '@type': 'Person', name: 'Denis Collin' },
@@ -62,7 +65,7 @@ export function seoFor(lang: Lang, path: string): PageSeo {
   const canonical = abs(localePath(lang, path));
   let title = t.seo.notFound.title;
   let description = t.seo.notFound.description;
-  let ogImage = abs(media(PHOTOS.facade));
+  let ogImage = absImage(photoJpg('facade'));
   let ogType: PageSeo['ogType'] = 'website';
   let noindex = false;
   const crumbs: { name: string; path: string }[] = [];
@@ -83,14 +86,15 @@ export function seoFor(lang: Lang, path: string): PageSeo {
     const name = pick(service.name, lang);
     title = fill(t.seo.service.title, { name });
     description = `${pick(service.card, lang)} ${t.seo.service.descriptionSuffix}`;
-    if (service.photo) ogImage = abs(media(PHOTOS[service.photo]));
+    if (service.photoUrl) ogImage = `${service.photoUrl}&fm=jpg`;
+    else if (service.photo) ogImage = absImage(photoJpg(service.photo));
     crumbs.push({ name, path });
   } else if (post) {
     title = `${pick(post.title, lang)} | ${t.seo.siteName}`;
     description = pick(post.excerpt, lang);
     // CMS photos: ask the CDN for a JPEG, which every link-preview scraper reads.
     if (post.photoUrl) ogImage = `${post.photoUrl}&fm=jpg`;
-    else if (post.photo) ogImage = abs(media(PHOTOS[post.photo]));
+    else if (post.photo) ogImage = absImage(photoJpg(post.photo));
     ogType = 'article';
     // Sample articles exist for review only; keep them out of search results.
     noindex = post.sample;

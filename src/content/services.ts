@@ -1,6 +1,8 @@
 import type { ServiceKey } from '../formLimits';
 import type { PhotoKey } from './media';
 import type { L } from './l10n';
+import { CMS } from './cms';
+import { applyServiceOverride } from '../../studio/schemaTypes/contentModel';
 
 // The five service pages. Headings and the substance of every item come from
 // the matching page on premiummg.ca (/caulking, /firestopping, /fireproofing,
@@ -22,6 +24,8 @@ export interface Service {
   // One line for the home page card.
   card: L;
   photo: PhotoKey | null;
+  // Set by the Studio: the service's own picture, replacing `photo`.
+  photoUrl?: string;
   photoAlt: string;
   h1: L;
   intro: L;
@@ -38,7 +42,7 @@ export interface Service {
 
 const t = (en: string, fr: string): L => ({ en, fr });
 
-export const SERVICES: Service[] = [
+export const DEFAULT_SERVICES: Service[] = [
   {
     key: 'caulking',
     legacySlug: 'caulking',
@@ -235,5 +239,9 @@ export const SERVICES: Service[] = [
     },
   },
 ];
+
+// What the CMS holds for each service page lies over the code's default; a
+// service with no document keeps the default whole.
+export const SERVICES: Service[] = DEFAULT_SERVICES.map(s => applyServiceOverride(s, CMS.services?.[s.key]));
 
 export const serviceByKey = (key: string) => SERVICES.find(s => s.key === key);
