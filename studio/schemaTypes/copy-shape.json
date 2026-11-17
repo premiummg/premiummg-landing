@@ -1,0 +1,1457 @@
+{
+ "t": "obj",
+ "f": {
+  "skipToContent": {
+   "t": "str",
+   "long": false,
+   "ph": []
+  },
+  "nav": {
+   "t": "obj",
+   "f": {
+    "home": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "about": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "services": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "projects": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "blog": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "contact": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "cta": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "menu": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "close": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "primary": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "darkMode": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "area": {
+   "t": "str",
+   "long": false,
+   "ph": []
+  },
+  "hours": {
+   "t": "str",
+   "long": false,
+   "ph": []
+  },
+  "address": {
+   "t": "str",
+   "long": false,
+   "ph": []
+  },
+  "placeholder": {
+   "t": "str",
+   "long": false,
+   "ph": []
+  },
+  "hero": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "cta": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "alt": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "certified": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "stats": {
+   "t": "obj",
+   "f": {
+    "label": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "items": {
+     "t": "arr",
+     "n": 5,
+     "item": {
+      "t": "obj",
+      "f": {
+       "value": {
+        "t": "str",
+        "long": false,
+        "ph": []
+       },
+       "label": {
+        "t": "str",
+        "long": false,
+        "ph": []
+       },
+       "placeholder": {
+        "t": "bool"
+       }
+      }
+     }
+    }
+   }
+  },
+  "credentials": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "points": {
+     "t": "arr",
+     "n": 3,
+     "item": {
+      "t": "str",
+      "long": false,
+      "ph": []
+     }
+    },
+    "strip": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "certs": {
+   "t": "obj",
+   "f": {
+    "ul": {
+     "t": "obj",
+     "f": {
+      "name": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "sub": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    },
+    "fcia": {
+     "t": "obj",
+     "f": {
+      "name": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "sub": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    },
+    "cor": {
+     "t": "obj",
+     "f": {
+      "name": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "sub": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    },
+    "nfca": {
+     "t": "obj",
+     "f": {
+      "name": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "sub": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    }
+   }
+  },
+  "stakes": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "items": {
+     "t": "arr",
+     "n": 3,
+     "item": {
+      "t": "obj",
+      "f": {
+       "title": {
+        "t": "str",
+        "long": false,
+        "ph": []
+       },
+       "body": {
+        "t": "str",
+        "long": true,
+        "ph": []
+       }
+      }
+     }
+    }
+   }
+  },
+  "services": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "learnMore": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "learnMoreAbout": {
+     "t": "str",
+     "long": false,
+     "ph": [
+      "{name}"
+     ]
+    },
+    "unsure": {
+     "t": "obj",
+     "f": {
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "body": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "cta": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    }
+   }
+  },
+  "projects": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "all": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "viewAll": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "filterLabel": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "namePlaceholder": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "empty": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "story": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "body": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "body2": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "figures": {
+     "t": "arr",
+     "n": 3,
+     "item": {
+      "t": "obj",
+      "f": {
+       "value": {
+        "t": "str",
+        "long": false,
+        "ph": []
+       },
+       "label": {
+        "t": "str",
+        "long": false,
+        "ph": []
+       }
+      }
+     }
+    },
+    "name": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "role": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "portraitAlt": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "cta": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "why": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "items": {
+     "t": "arr",
+     "n": 4,
+     "item": {
+      "t": "obj",
+      "f": {
+       "title": {
+        "t": "str",
+        "long": false,
+        "ph": []
+       },
+       "body": {
+        "t": "str",
+        "long": true,
+        "ph": []
+       }
+      }
+     }
+    }
+   }
+  },
+  "process": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "items": {
+     "t": "arr",
+     "n": 3,
+     "item": {
+      "t": "obj",
+      "f": {
+       "title": {
+        "t": "str",
+        "long": false,
+        "ph": []
+       },
+       "body": {
+        "t": "str",
+        "long": true,
+        "ph": []
+       }
+      }
+     }
+    }
+   }
+  },
+  "reviews": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "client": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "items": {
+     "t": "arr",
+     "n": 4,
+     "item": {
+      "t": "obj",
+      "f": {
+       "quote": {
+        "t": "str",
+        "long": true,
+        "ph": []
+       },
+       "name": {
+        "t": "str",
+        "long": false,
+        "ph": []
+       }
+      }
+     }
+    }
+   }
+  },
+  "blogPreview": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "viewAll": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "estimate": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    }
+   }
+  },
+  "form": {
+   "t": "obj",
+   "f": {
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "name": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "company": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "email": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "phone": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "service": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "servicePlaceholder": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "message": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "messagePlaceholder": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "required": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "optional": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "submit": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sending": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "okTitle": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "okBody": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "again": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "errors": {
+     "t": "obj",
+     "f": {
+      "name": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "email": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "captcha": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "rate": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "server": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    }
+   }
+  },
+  "newsletter": {
+   "t": "obj",
+   "f": {
+    "label": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "body": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "email": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "placeholder": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "cta": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "ok": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "error": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "footer": {
+   "t": "obj",
+   "f": {
+    "serviceArea": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "services": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "company": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "contact": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "hours": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "rights": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "terms": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "privacy": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "certified": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "follow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "servicePage": {
+   "t": "obj",
+   "f": {
+    "scope": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "benefits": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "process": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "questions": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "related": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "other": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "otherEyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "photoNeeded": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "aboutPage": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "commitment": {
+     "t": "obj",
+     "f": {
+      "eyebrow": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "sub": {
+       "t": "str",
+       "long": true,
+       "ph": []
+      },
+      "pillars": {
+       "t": "arr",
+       "n": 3,
+       "item": {
+        "t": "str",
+        "long": false,
+        "ph": []
+       }
+      },
+      "teamPhoto": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    },
+    "team": {
+     "t": "obj",
+     "f": {
+      "eyebrow": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "portraitsNeeded": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    },
+    "credentials": {
+     "t": "obj",
+     "f": {
+      "eyebrow": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "sub": {
+       "t": "str",
+       "long": true,
+       "ph": []
+      }
+     }
+    },
+    "affiliation": {
+     "t": "obj",
+     "f": {
+      "eyebrow": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "sub": {
+       "t": "str",
+       "long": true,
+       "ph": []
+      },
+      "logosNeeded": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    }
+   }
+  },
+  "projectsPage": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "jump": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "count": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "aboutService": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "fromGallery": {
+     "t": "str",
+     "long": false,
+     "ph": [
+      "{name}"
+     ]
+    }
+   }
+  },
+  "blogPage": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "sample": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "featured": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "latest": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "search": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "filterLabel": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "all": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "readArticle": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "minRead": {
+     "t": "str",
+     "long": false,
+     "ph": [
+      "{n}"
+     ]
+    },
+    "noResults": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "articlePage": {
+   "t": "obj",
+   "f": {
+    "inThisArticle": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "keyTakeaways": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "share": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "copyLink": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "copied": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "playVideo": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "newTab": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "back": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "keepReading": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "authorPlaceholder": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "cta": {
+     "t": "str",
+     "long": false,
+     "ph": [
+      "{name}"
+     ]
+    },
+    "ctaTitle": {
+     "t": "str",
+     "long": false,
+     "ph": [
+      "{name}"
+     ]
+    },
+    "ctaTitleGeneral": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "ctaBodyGeneral": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "contactPage": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "infoEyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "infoTitle": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "infoSub": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "phone": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "email": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "address": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "formTitle": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "mapTitle": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "directions": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "legal": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "onThisPage": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "pendingText": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "questions": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "notFound": {
+   "t": "obj",
+   "f": {
+    "eyebrow": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "title": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "sub": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    },
+    "cta": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    }
+   }
+  },
+  "backToTop": {
+   "t": "str",
+   "long": false,
+   "ph": []
+  },
+  "seo": {
+   "t": "obj",
+   "f": {
+    "siteName": {
+     "t": "str",
+     "long": false,
+     "ph": []
+    },
+    "home": {
+     "t": "obj",
+     "f": {
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "description": {
+       "t": "str",
+       "long": true,
+       "ph": []
+      }
+     }
+    },
+    "about": {
+     "t": "obj",
+     "f": {
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "description": {
+       "t": "str",
+       "long": true,
+       "ph": []
+      }
+     }
+    },
+    "projects": {
+     "t": "obj",
+     "f": {
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "description": {
+       "t": "str",
+       "long": true,
+       "ph": []
+      }
+     }
+    },
+    "blog": {
+     "t": "obj",
+     "f": {
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "description": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    },
+    "contact": {
+     "t": "obj",
+     "f": {
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "description": {
+       "t": "str",
+       "long": true,
+       "ph": []
+      }
+     }
+    },
+    "terms": {
+     "t": "obj",
+     "f": {
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "description": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    },
+    "privacy": {
+     "t": "obj",
+     "f": {
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "description": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    },
+    "service": {
+     "t": "obj",
+     "f": {
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": [
+        "{name}"
+       ]
+      },
+      "descriptionSuffix": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    },
+    "notFound": {
+     "t": "obj",
+     "f": {
+      "title": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      },
+      "description": {
+       "t": "str",
+       "long": false,
+       "ph": []
+      }
+     }
+    },
+    "organizationDescription": {
+     "t": "str",
+     "long": true,
+     "ph": []
+    }
+   }
+  }
+ }
+}
