@@ -3,11 +3,15 @@ import { renderToString } from 'react-dom/server';
 // react-router v7 ships StaticRouter from `react-router` itself.
 import { StaticRouter } from 'react-router';
 import { AppRoutes } from './App';
+import { photo } from './content/media';
 import { seoFor } from './seo';
 import { headTags } from './lib/head';
 import { splitLocalePath, allRoutes } from './lib/routes';
 
 export { allRoutes };
+
+/** The picture the home hero shows until its film plays: what LCP is measured on. */
+export const heroImageHref = photo('spray');
 
 /**
  * Renders one route to static HTML at build time: the same component tree

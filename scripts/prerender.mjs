@@ -18,7 +18,7 @@ const root = resolve(here, '..');
 const dist = join(root, 'dist');
 const ssrDist = join(root, '.prerender');
 
-const { renderRoute, renderNotFound, allRoutes } = await import(pathToFileURL(join(ssrDist, 'entry-prerender.js')).href);
+const { renderRoute, renderNotFound, allRoutes, heroImageHref } = await import(pathToFileURL(join(ssrDist, 'entry-prerender.js')).href);
 
 const template = readFileSync(join(dist, 'index.html'), 'utf8');
 const SEO_BLOCK = /<!--seo-start-->[\s\S]*?<!--seo-end-->/;
@@ -37,9 +37,10 @@ for (const [what, present] of [
   if (!present) throw new Error(`index.html is missing its ${what}.`);
 }
 
-// The home hero's photo is the largest thing painted above the fold, so it is
-// what Largest Contentful Paint is measured on: start it with the HTML.
-const HERO_PRELOAD = '<link rel="preload" as="image" href="/media/work-facade.webp" fetchpriority="high">';
+// The home hero's still frame (the poster of its film) is the largest thing
+// painted above the fold, so it is what Largest Contentful Paint is measured
+// on: start it with the HTML.
+const HERO_PRELOAD = `<link rel="preload" as="image" href="${heroImageHref}" fetchpriority="high">`;
 
 // Function replacers, not strings: `String.replace` reads `$&`, `$'` and `$$`
 // inside a replacement STRING as directives, so a dollar sign in the page
