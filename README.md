@@ -27,11 +27,27 @@ npm run build # typecheck, client build, prerender every route into dist/
 
 ## Content management (Sanity)
 
-Blog articles and project photos are edited in a Sanity Studio (`studio/`), not
-in code. Publishing there triggers a Vercel deploy; the build pulls the
-published content (`scripts/fetch-cms.mjs`) into
-`src/content/cms.generated.json` (gitignored) in the same `Post[]` / `Project[]`
-shapes the pages already use, and the site is prerendered as usual.
+Almost everything a visitor reads or sees is edited in a Sanity Studio
+(`studio/`), not in code: every page's wording, the service pages, the team,
+certifications, legal pages, pictures, blog articles, project photos and social
+links. Publishing there triggers a Vercel deploy; the build pulls the published
+content (`scripts/fetch-cms.mjs`) into `src/content/cms.generated.json`
+(gitignored) in the shapes the pages already use, and the site is prerendered
+as usual. The page layout, the menus and the section order stay in code.
+
+The code keeps every string and every list as the default and the CMS only lays
+over it (`mergeCopy`, `applyServiceOverride`), so an empty field or an
+unreachable CMS never loses a word. The Studio's forms for the wording are
+built from `src/copy.ts` (`studio/schemaTypes/copy-shape.json`).
+
+**Adding or removing a string in `src/copy.ts`:** run `npm run copy:shape`,
+commit the updated `copy-shape.json`, and `cd studio && npm run deploy`
+(`tests/cms.test.ts` fails while the file is stale). A new string shows empty in
+the Studio and uses the code's text until someone fills it.
+
+**First load of the content into a new Studio:** `npm run cms:seed-copy` (needs
+`npx sanity login`). It skips any group the Studio already holds, so it never
+overwrites an editor's work; `--force` replaces.
 
 - No `SANITY_PROJECT_ID`: the site keeps its built-in sample articles and
   photos, so a fresh clone builds.
@@ -42,7 +58,7 @@ shapes the pages already use, and the site is prerendered as usual.
 - Categories and services are lists in code. Adding one means changing
   `src/` and `studio/schemaTypes/options.ts`; `tests/cms.test.ts` fails if
   they drift.
-- UI strings (`src/copy.ts`), legal text and the services pages stay in code.
+- The editor-facing guide is `docs/editor-guide.md`.
 
 ```bash
 cd studio && npm install
